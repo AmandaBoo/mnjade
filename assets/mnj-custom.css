@@ -1,0 +1,134 @@
+/*
+  MN JADE overrides on top of Horizon, loaded last from layout/theme.liquid.
+  Settings and templates do everything they can; this file holds the rest.
+  See CUSTOMIZATIONS.md.
+*/
+
+/* Global: body text 15px (the type setting only offers 14 or 16) */
+:root {
+  --font-size--paragraph: 0.9375rem;
+}
+
+/* Global: 24px inset for page-width sections on desktop */
+@media screen and (min-width: 750px) {
+  .page-width-narrow {
+    --page-margin: max(24px, var(--safe-area-inset-left, 0px), var(--safe-area-inset-right, 0px));
+  }
+}
+
+/* Global: interface labels that come from locale files stay lowercase */
+.button,
+.button-secondary,
+.cart-totals__total-label,
+.cart-totals__tax-note,
+.cart-items__remove {
+  text-transform: lowercase;
+}
+
+/* Global: circular product images on cards and in the product gallery */
+.card-gallery img,
+.media-gallery img {
+  border-radius: 50%;
+}
+
+/* Header: text logo, 30px Quicksand with wide tracking */
+.header-logo {
+  font-family: var(--font-heading--family);
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+/* Header: 15px semibold nav links */
+.menu-list__link {
+  --menu-top-level-font-size-desktop: 0.9375rem;
+  --menu-top-level-font-weight: 600;
+}
+
+/* Home: inset hero panel, about 680px tall */
+.hero {
+  margin: var(--page-margin) var(--page-margin) 0;
+  min-height: min(680px, 80svh);
+  border-radius: 32px;
+  overflow: hidden;
+}
+
+/* Shop: inset 480px banner */
+[data-template^='collection'] .image-block,
+[data-template^='collection'] .image-block img,
+[data-template^='collection'] .image-block .placeholder-image {
+  width: 100%;
+  height: min(480px, 60svh);
+  aspect-ratio: auto;
+  object-fit: cover;
+}
+
+/* Shop: collection links as underlined text tabs */
+.collection-links__link {
+  --min-font-size: 0.9375rem;
+  --max-font-size: 0.9375rem;
+
+  align-items: center;
+  min-height: 40px;
+  padding-inline: 16px;
+  border-block-end: 2px solid transparent;
+}
+
+.collection-links__link[aria-current='true'] {
+  border-block-end-color: var(--color-foreground);
+}
+
+/* Shop: drop the hover image that the text layout adds */
+.collection-links__link .collection-links__image {
+  display: none;
+}
+
+/* Cart: 112px thumbnails (circle comes from the cart thumbnail radius setting) */
+.cart-items__media-container {
+  max-width: 112px;
+}
+
+/* Cart: "remove" as a text link instead of the trash icon */
+.cart-items__remove {
+  width: auto;
+  color: var(--color-foreground-muted);
+  font-size: var(--font-size--xs);
+  text-decoration: underline;
+}
+
+.cart-items__remove svg {
+  display: none;
+}
+
+.cart-items__remove .visually-hidden {
+  /* !important: base.css sets position with !important on .visually-hidden */
+  position: static !important;
+  width: auto;
+  height: auto;
+  margin: 0;
+  clip: auto;
+}
+
+/* Cart: "keep shopping" underlined link */
+.cart-page__more-blocks .button-unstyled {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+/* Footer: "faqs ✿ shipping" on one centered row, menu title hidden */
+.footer-content .menu__heading {
+  display: none;
+}
+
+.footer-content .menu ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Footer: centered copyright line */
+.utilities--blocks-1 > * {
+  justify-self: center;
+  text-align: center;
+}
