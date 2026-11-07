@@ -303,8 +303,12 @@ media-gallery slideshow-arrows {
 }
 
 .cart-page__more-blocks .button-unstyled {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  border-block-end: 2px solid var(--color-foreground);
   font-weight: 600;
-  text-underline-offset: 6px;
+  text-decoration: none;
 }
 
 .cart-page--empty .cart-page__more-blocks {
