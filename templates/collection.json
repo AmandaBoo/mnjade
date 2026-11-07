@@ -15,7 +15,6 @@
         "image_dYcqKa": {
           "type": "image",
           "name": "t:names.image",
-          "disabled": true,
           "settings": {
             "image": "{{ closest.collection.image }}",
             "image_ratio": "landscape",
@@ -51,9 +50,9 @@
       ],
       "name": "t:names.heading",
       "settings": {
-        "content_direction": "row",
+        "content_direction": "column",
         "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
+        "horizontal_alignment": "center",
         "vertical_alignment": "center",
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "center",
@@ -279,7 +278,7 @@
         "padding-inline-end": 24,
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 24,
-        "padding-block-end": 96
+        "padding-block-end": 100
       }
     }
   },
