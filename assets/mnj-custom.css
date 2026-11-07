@@ -39,6 +39,13 @@
   letter-spacing: 0.06em;
 }
 
+/* Header: smaller logo on phones so it clears the icon circles */
+@media screen and (max-width: 749px) {
+  .header-logo {
+    font-size: 1.5rem;
+  }
+}
+
 /* Header: 36px above the logo, 12px to the nav, 24px below it */
 [data-menu-style='menu'] .header__row--top .header__columns {
   --padding-block-start: 36px;
@@ -67,6 +74,67 @@
 /* Header: the current page's link is underlined */
 .menu-list__link--active {
   border-block-end-color: var(--color-foreground);
+}
+
+/* Header: search, account and cart as 44px outlined circles */
+.header__column--right,
+.header__column--right header-actions {
+  gap: 10px;
+  margin-inline-start: 0;
+}
+
+[data-menu-style='menu'] .header__column--right {
+  padding-inline-end: 8px;
+}
+
+.header__column--right .search-action {
+  margin-inline: 0;
+}
+
+.header__columns .header-actions__action svg {
+  width: 18px;
+  height: 18px;
+}
+
+.header-actions__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--color-input-border);
+  border-radius: 50%;
+  background: var(--color-background);
+}
+
+/* Header: count badge on the circle's corner, also showing 0 */
+.header-actions__cart-icon {
+  --cart-bubble-size: 18px;
+  --cart-bubble-top: -4px;
+  --cart-bubble-right: -4px;
+}
+
+.header-actions__cart-icon .cart-bubble__text {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+[dir] .header-actions__cart-icon.header-actions__cart-icon--has-cart svg {
+  mask: none;
+}
+
+.header-actions__cart-icon .cart-bubble.visually-hidden {
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+}
+
+.cart-bubble__text-count.hidden {
+  /* !important: base.css hides .hidden with !important; Horizon hides the count at 0 */
+  display: inline !important;
 }
 
 /* Home: empty "follow along" image slots keep their full size */
