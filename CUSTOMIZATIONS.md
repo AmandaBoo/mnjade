@@ -44,7 +44,8 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
 
 - `sections/header-group.json`: announcement bar removed; logo centered with the menu on
   the row below; country and language selectors off; sticky header off; transparent home
-  header off; 1px color4 bottom border; text-style menu.
+  header off; 1px color4 bottom border; text-style menu; phone navigation bar on, with the
+  hamburger hidden in the stylesheet.
 - `sections/footer-group.json`: newsletter section, policy list and old columns removed;
   one centered group with a divider, brand text and the `footer` menu; copyright with
   "Powered by Shopify" off.
@@ -100,8 +101,9 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
   marks the active tab. Native filtering renders as dropdowns and has no "all" option.
 - **Favorites row:** cards fill the row at about 443px wide rather than the design's 400px.
 - **Muted text:** `#888888` on white is about 3.5:1, below the 4.5:1 guideline for small text.
-- **Phones:** the design doesn't cover them. The logo drops to 24px and the search flower
-  is 44px.
+- **Phones:** the design doesn't cover them. The logo drops to 24px, and `shop` and `about`
+  sit in a row under it instead of a hamburger. A menu with many links would need the
+  hamburger back, or a scrolling row.
 
 ## Values hardcoded in the stylesheet
 
@@ -124,6 +126,7 @@ size, and the menu's font size and weight.
 4. Check these in `shopify theme dev`, because the stylesheet depends on Horizon's markup:
    - **Header:** `.header-actions__action`, `.cart-bubble`, `.menu-list__link`, and the
      `--menu-top-level-*` and `--padding-block-*` variables
+   - **Phone header:** `.header-drawer`, `.menu-list--mobile`, and the `leftA` grid area
    - **Cards and gallery:** circular images on `.card-gallery` and `media-gallery`
    - **Product page:** `.product-information__grid` columns, recommendations layout
    - **Shop page:** `.collection-links__link` tabs, `.main-collection-grid__empty`

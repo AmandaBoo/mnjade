@@ -79,6 +79,43 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   border-block-end-color: var(--color-foreground);
 }
 
+/* Header on phones: shop and about stay visible under the logo, so no hamburger */
+.header-drawer {
+  display: none;
+}
+
+/* Header on phones: search takes the hamburger's slot, level with the cart on the right.
+   #header-component: Horizon sets this grid area with a more specific rule */
+@media screen and (max-width: 749px) {
+  #header-component .header__columns .search-action {
+    grid-area: leftA;
+  }
+}
+
+#header-component[data-menu-style='drawer'] .header__columns .search-action {
+  grid-area: leftA;
+}
+
+.menu-list--mobile li {
+  padding-block: 0;
+}
+
+.menu-list--mobile .menu-list__item {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding-inline: 16px;
+  border-block-end: 2px solid transparent;
+  color: var(--color-foreground);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.menu-list--mobile .menu-list__item[aria-current='page'] {
+  border-block-end-color: var(--color-foreground);
+}
+
 /* Header: search, account and cart on 48px soft gray flowers */
 .header__column--right,
 .header__column--right header-actions {
@@ -102,6 +139,7 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
 }
 
 .header-actions__action {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
