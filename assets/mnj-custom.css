@@ -27,7 +27,7 @@
 
 /* Global: circular product images on cards and in the product gallery */
 .card-gallery img,
-.media-gallery img {
+media-gallery img:not(.dialog-zoomed-gallery *) {
   border-radius: 50%;
 }
 
@@ -191,6 +191,95 @@ collection-links-component {
   display: none;
 }
 
+/* Product: 640px gallery and 420px details card, centered, 56px apart */
+@media screen and (min-width: 750px) {
+  .product-information__grid {
+    --gap: 56px;
+
+    width: 100%;
+    max-width: 1116px;
+    justify-self: center;
+  }
+
+  /* #MainContent: Horizon's wide-screen 2fr/1fr rule has very high specificity */
+  #MainContent .product-information--media-left {
+    grid-template-columns: minmax(0, 1fr) 448px;
+  }
+}
+
+/* Product: thumbnails navigate the gallery, so the arrows over the circle go */
+media-gallery slideshow-arrows {
+  display: none;
+}
+
+/* Product: plain "add to cart" label, no icon */
+.add-to-cart-icon {
+  display: none;
+}
+
+/* Product: "more little friends" centered, up to 340px per product */
+.block-resource-list .resource-list--grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.block-resource-list .resource-list__item {
+  flex: 1 1 260px;
+  max-width: 340px;
+}
+
+/* Cart: 720px items beside a 380px summary, centered, 56px apart */
+@media screen and (min-width: 750px) {
+  .cart-page {
+    width: 100%;
+    max-width: 1156px;
+    margin-inline: auto;
+    grid-template-columns: minmax(0, 720px) 380px;
+    gap: 0 56px;
+    justify-content: center;
+  }
+}
+
+/* Cart: summary panel keeps its padding and #F2F2F2 fill on phones too
+   (Horizon drops the block's background color below 750px) */
+.cart-summary__inner.cart-summary__inner {
+  padding: 32px;
+  background-color: #f2f2f2;
+}
+
+/* Cart: rows with lines above and below, Quicksand names, no repeated unit price */
+.cart-items__table {
+  border-block-start: 1px solid var(--color-input-border);
+}
+
+.cart-items--dividers .cart-items__table tbody .cart-items__table-row {
+  margin-block-end: 0;
+  padding-block: 24px;
+  border-block-end: 1px solid var(--color-input-border);
+}
+
+.cart-items__title {
+  font-family: var(--font-heading--family);
+  font-size: var(--font-size--lg);
+  font-weight: 600;
+}
+
+.cart-items__unit-price-wrapper {
+  display: none;
+}
+
+.cart-items__price {
+  font-size: var(--font-size--md);
+  font-weight: 600;
+}
+
+/* Cart: no rule at the top of the summary panel */
+.cart-totals:not(:has(.cart-actions)) {
+  padding-block-start: 0;
+  border-block-start: 0;
+}
+
 /* Cart: 112px thumbnails (circle comes from the cart thumbnail radius setting) */
 .cart-items__media-container {
   max-width: 112px;
@@ -198,6 +287,7 @@ collection-links-component {
 
 /* Cart: "remove" as a text link instead of the trash icon */
 .cart-items__remove {
+  flex-shrink: 0;
   width: auto;
   color: var(--color-foreground-muted);
   font-size: var(--font-size--xs);
@@ -218,7 +308,12 @@ collection-links-component {
 }
 
 /* Cart: "keep shopping" underlined link, hidden on the empty cart's own button */
+.cart-page__more-blocks {
+  margin-block-start: 32px;
+}
+
 .cart-page__more-blocks .button-unstyled {
+  font-weight: 600;
   text-underline-offset: 6px;
 }
 
