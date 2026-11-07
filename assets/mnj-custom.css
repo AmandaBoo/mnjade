@@ -39,7 +39,7 @@
   letter-spacing: 0.06em;
 }
 
-/* Header: smaller logo on phones so it clears the icon circles */
+/* Header: smaller logo on phones so it clears the icon flowers */
 @media screen and (max-width: 749px) {
   .header-logo {
     font-size: 1.5rem;
@@ -76,7 +76,7 @@
   border-block-end-color: var(--color-foreground);
 }
 
-/* Header: search, account and cart as 44px outlined circles */
+/* Header: search, account and cart on 48px soft gray flowers */
 .header__column--right,
 .header__column--right header-actions {
   gap: 10px;
@@ -84,6 +84,8 @@
 }
 
 [data-menu-style='menu'] .header__column--right {
+  align-self: start;
+  margin-block-end: -4px; /* the 48px flowers should not make the logo row taller */
   padding-inline-end: 8px;
 }
 
@@ -101,19 +103,19 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   padding: 0;
-  border: 1px solid var(--color-input-border);
+  border: 0;
   border-radius: 50%;
-  background: var(--color-background);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='%23e6e6e6'%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11'/%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11' transform='rotate(72 24 24)'/%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11' transform='rotate(144 24 24)'/%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11' transform='rotate(216 24 24)'/%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11' transform='rotate(288 24 24)'/%3E%3Ccircle cx='24' cy='24' r='13'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
-/* Header: count badge on the circle's corner, also showing 0 */
+/* Header: count badge on the flower's corner, also showing 0 */
 .header-actions__cart-icon {
   --cart-bubble-size: 18px;
-  --cart-bubble-top: -4px;
-  --cart-bubble-right: -4px;
+  --cart-bubble-top: -6px;
+  --cart-bubble-right: -6px;
 }
 
 .header-actions__cart-icon .cart-bubble__text {
