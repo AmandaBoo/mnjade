@@ -24,6 +24,8 @@
     "type_size_h3": "24",
     "type_size_h4": "18",
     "type_size_h5": "16",
+    "type_font_h6": "body",
+    "type_size_h6": "12",
     "type_case_h6": "none",
     "badge_sale_background_color": "{{ settings.color_palette.color3 }}",
     "badge_sale_text_color": "{{ settings.color_palette.foreground }}",
