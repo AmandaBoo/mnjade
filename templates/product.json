@@ -378,7 +378,7 @@
         "section_width": "page-width",
         "horizontal_alignment_flex_direction_column": "center",
         "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-end": 48
       }
     }
   },
