@@ -300,6 +300,16 @@ media-gallery slideshow-arrows {
   clip: auto;
 }
 
+/* Cart: clearly disabled stepper buttons, and a softer error icon */
+.cart-items__quantity :is(.quantity-minus, .quantity-plus):disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.cart-item__error .svg-wrapper {
+  opacity: 0.75;
+}
+
 /* Cart: "keep shopping" underlined link, hidden on the empty cart's own button */
 .cart-page__more-blocks {
   margin-block-start: 32px;
