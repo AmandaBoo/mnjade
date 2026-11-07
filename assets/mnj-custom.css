@@ -152,16 +152,6 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   overflow: hidden;
 }
 
-/* Shop: inset 480px banner */
-[data-template^='collection'] .image-block,
-[data-template^='collection'] .image-block img,
-[data-template^='collection'] .image-block .placeholder-image {
-  width: 100%;
-  height: min(480px, 60svh);
-  aspect-ratio: auto;
-  object-fit: cover;
-}
-
 /* Shop: collection links as underlined text tabs */
 collection-links-component {
   --gap-2xl: 8px;
@@ -331,6 +321,11 @@ media-gallery slideshow-arrows {
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
+}
+
+/* Footer: widen the space in "faqs ✿" to match the 12px gap after the flower */
+.footer-content .menu a {
+  word-spacing: 0.75em;
 }
 
 /* Footer: centered copyright line */

@@ -50,8 +50,7 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
   "Powered by Shopify" off.
 - `templates/index.json`: hero with the sticker, `✿ favorites ✿` product list with a
   `shop all` button, `follow along` panel with four image blocks and an `instagram` button.
-- `templates/collection.json`: banner image linked to `{{ closest.collection.image }}`,
-  `✿ shop ✿` heading, `collection-links` tabs, empty message, product grid with filtering,
+- `templates/collection.json`: `✿ shop ✿` heading, `collection-links` tabs, empty message, product grid with filtering,
   sorting and grid density off.
 - `templates/product.json`: carousel gallery with 72px thumbnails, bordered details card,
   `more little friends` panel using the recommendations block. Quantity and accelerated
@@ -73,7 +72,6 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
 - Home hero image
 - The four `follow along` images
 - `instagram` button link
-- Collection images, which feed the shop banner
 
 ## Deviations from the design
 

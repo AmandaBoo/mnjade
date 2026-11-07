@@ -12,28 +12,6 @@
     "section": {
       "type": "section",
       "blocks": {
-        "image_dYcqKa": {
-          "type": "image",
-          "name": "t:names.image",
-          "settings": {
-            "image": "{{ closest.collection.image }}",
-            "image_ratio": "landscape",
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 32,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
         "text_tqQTNE": {
           "type": "text",
           "settings": {
@@ -45,7 +23,6 @@
         }
       },
       "block_order": [
-        "image_dYcqKa",
         "text_tqQTNE"
       ],
       "name": "t:names.heading",
@@ -57,7 +34,7 @@
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 72,
+        "gap": 12,
         "section_width": "page-width",
         "section_height_custom": 50,
         "background_media": "none",
@@ -72,7 +49,7 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 24,
+        "padding-block-start": 56,
         "padding-block-end": 24
       }
     },
@@ -113,7 +90,7 @@
         "alignment": "center",
         "section_width": "page-width",
         "padding-block-start": 0,
-        "padding-block-end": 16
+        "padding-block-end": 24
       }
     },
     "main": {
@@ -277,7 +254,7 @@
         "padding-inline-start": 24,
         "padding-inline-end": 24,
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 24,
+        "padding-block-start": 40,
         "padding-block-end": 100
       }
     },
