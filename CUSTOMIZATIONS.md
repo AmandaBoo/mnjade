@@ -65,7 +65,9 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
 - **Collections:** handles `all`, `necklaces`, `bracelets`, `earrings`. The shop tabs show
   "Collection title" placeholders until they exist.
 - **Interface wording:** Horizon's locale strings can be changed in Online Store > Themes >
-  Edit default theme content. CSS lowercases the labels but can't reword them.
+  Edit default theme content. CSS lowercases the labels but can't reword them. For the search
+  overlay, set the placeholder to `search for something little ✿` and "View all" to
+  `see everything`.
 
 ## Empty settings to fill in the theme editor
 
@@ -81,6 +83,8 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
 - **Cart remove link:** beside the quantity stepper, not under the product name.
 - **Product name case:** taken from the product title as typed.
 - **Copyright line:** includes the store name, because Horizon always adds it.
+- **Search overlay:** no "see everything" link until something is typed, because Horizon only
+  shows that button with results. Its label and the search placeholder are locale strings.
 - **Shop tabs:** links to separate collections, chosen because `collection-links` already
   marks the active tab. Native filtering renders as dropdowns and has no "all" option.
 - **Favorites row:** cards fill the row at about 443px wide rather than the design's 400px.
@@ -92,8 +96,10 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
 
 Settings can't reach these, so change them in `assets/mnj-custom.css`:
 
-- `#e6e6e6`: the header flower, inside its SVG background
+- `#e6e6e6`: the flower behind the header and search icons, inside the `--mnj-flower` SVG
 - `#f2f2f2`: the cart summary fill, needed because Horizon drops it on phones
+- `#555555`: prices in the search overlay
+- `17 17 17` at 0.35: the dim behind the search overlay
 
 Two theme settings no longer do anything because the stylesheet overrides them: paragraph
 size, and the menu's font size and weight.
@@ -111,5 +117,7 @@ size, and the menu's font size and weight.
    - **Product page:** `.product-information__grid` columns, recommendations layout
    - **Shop page:** `.collection-links__link` tabs, `.main-collection-grid__empty`
    - **Cart:** `.cart-items__*` rows, `.cart-summary__inner`, the text "remove" link
+   - **Search overlay:** `.search-modal__content`, `.predictive-search-*`, `.resource-card__*`.
+     Check it open, with results, with no results, and at phone width
 5. The "0" cart badge and the "remove" link override `.hidden` and `.visually-hidden` from
    `assets/base.css`. If either disappears, check those two classes first.
