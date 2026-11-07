@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "sections": {
     "main": {
       "type": "main-blog",
@@ -20,9 +19,8 @@
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
-            "type_preset": "h2",
+            "type_preset": "h1",
             "font": "var(--font-body--family)",
-            "font_size": "",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
@@ -49,14 +47,12 @@
               "name": "t:names.title",
               "static": true,
               "settings": {
-                "type_preset": "h4",
+                "type_preset": "h3",
                 "font": "var(--font-body--family)",
-                "font_size": "",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "text": "",
                 "read_only": true,
                 "alignment": "left",
                 "show_alignment": false,
@@ -72,9 +68,8 @@
               "name": "t:names.details",
               "static": true,
               "settings": {
-                "show_date": true,
+                "show_date": false,
                 "show_author": false,
-                "type_preset": "",
                 "alignment": "left",
                 "show_alignment": false,
                 "padding-block-start": 0,
@@ -102,6 +97,7 @@
         "title"
       ],
       "settings": {
+        "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 0,
         "padding-block-end": 48
       }
