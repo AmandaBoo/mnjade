@@ -41,6 +41,7 @@
     "cart_type": "page",
     "cart_price_font": "subheading",
     "show_cart_note": false,
+    "empty_cart_button_link": "shopify://collections/shop",
     "show_add_discount_code": false,
     "icon_stroke": "default",
     "input_border_width": 1,

@@ -244,7 +244,7 @@
           "type": "button",
           "settings": {
             "label": "shop all",
-            "link": "shopify://collections/all",
+            "link": "shopify://collections/shop",
             "style_class": "button"
           }
         }

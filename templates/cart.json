@@ -59,7 +59,7 @@
           "type": "button",
           "settings": {
             "label": "keep shopping",
-            "link": "shopify://collections/all",
+            "link": "shopify://collections/shop",
             "style_class": "button-unstyled"
           }
         }

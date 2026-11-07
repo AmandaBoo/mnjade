@@ -57,13 +57,24 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
   checkout are disabled static blocks. Sticky add to cart is off.
 - `templates/cart.json`: `your cart` title, gray summary panel, `keep shopping` link.
 
+## Redirects to the shop page
+
+Shopify won't let `/collections` or `/collections/all` be removed, and every collection URL
+must start with `/collections/`. So the shop page is `/collections/shop`, and a short script in
+a `custom-liquid` section sends those two pages there:
+
+- `templates/list-collections.json`: section `shop_redirect`, with a plain link as a fallback
+- `templates/collection.json`: section `all_redirect`, which only acts on the built-in `all` page
+
+Neither runs in the theme editor. If the `shop` handle changes, update both.
+
 ## Set in the Shopify admin, not in this repo
 
 - **Store name:** `MN JADE` in Settings. The logo and copyright line read it.
 - **`main-menu`:** shop, about.
 - **`footer` menu:** `faqs ✿`, `shipping`. The ✿ is part of the first link's title.
-- **Collections:** handles `all`, `necklaces`, `bracelets`, `earrings`. The shop tabs show
-  "Collection title" placeholders until they exist.
+- **Collections:** handles `shop`, `necklaces`, `bracelets`, `earrings`. The tab label is the
+  collection's title. The shop tabs show "Collection title" placeholders if these are missing.
 - **Interface wording:** Horizon's locale strings can be changed in Online Store > Themes >
   Edit default theme content. CSS lowercases the labels but can't reword them. For the search
   overlay, set the placeholder to `search for something little ✿` and "View all" to
