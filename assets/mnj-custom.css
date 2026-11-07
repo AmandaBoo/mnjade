@@ -45,6 +45,11 @@
   --menu-top-level-font-weight: 600;
 }
 
+/* Home: empty "follow along" image slots keep their full size */
+.image-block .placeholder-image {
+  width: 100%;
+}
+
 /* Home: inset hero panel, about 680px tall */
 .hero {
   margin: var(--page-margin) var(--page-margin) 0;
@@ -109,10 +114,13 @@
   clip: auto;
 }
 
-/* Cart: "keep shopping" underlined link */
+/* Cart: "keep shopping" underlined link, hidden on the empty cart's own button */
 .cart-page__more-blocks .button-unstyled {
-  text-decoration: underline;
   text-underline-offset: 6px;
+}
+
+.cart-page--empty .cart-page__more-blocks {
+  display: none;
 }
 
 /* Footer: "faqs ✿ shipping" on one centered row, menu title hidden */
