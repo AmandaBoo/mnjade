@@ -280,11 +280,32 @@
         "padding-block-start": 24,
         "padding-block-end": 100
       }
+    },
+    "empty_message": {
+      "type": "section",
+      "blocks": {
+        "empty_text": {
+          "type": "mnj-empty-collection",
+          "settings": {
+            "text": "this spot is empty for the moment"
+          }
+        }
+      },
+      "block_order": [
+        "empty_text"
+      ],
+      "settings": {
+        "section_width": "page-width",
+        "horizontal_alignment_flex_direction_column": "center",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "section",
     "shop_filters",
+    "empty_message",
     "main"
   ]
 }

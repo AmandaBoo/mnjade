@@ -1,0 +1,46 @@
+{% doc %}
+  Renders a message only when the current collection has no products.
+  Horizon's own empty message comes from a locale string, so mnj-custom.css hides it on
+  collection pages and this block replaces it with text editable in the theme editor.
+
+  @example
+  {% content_for 'block', type: 'mnj-empty-collection', id: 'empty-message' %}
+{% enddoc %}
+
+{% if closest.collection.products_count == 0 and block.settings.text != blank %}
+  <p
+    class="mnj-empty-collection h2"
+    {{ block.shopify_attributes }}
+  >
+    {{ block.settings.text | escape }}
+  </p>
+{% endif %}
+
+{% stylesheet %}
+  .mnj-empty-collection {
+    width: 100%;
+    margin: 0;
+    padding-block: var(--padding-6xl);
+    text-align: center;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "MN JADE empty collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Message",
+      "info": "Only shows when the collection has no products.",
+      "default": "this spot is empty for the moment"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MN JADE empty collection"
+    }
+  ]
+}
+{% endschema %}
