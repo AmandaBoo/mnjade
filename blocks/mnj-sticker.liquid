@@ -1,0 +1,108 @@
+{% doc %}
+  Renders a round, tilted text sticker. Add it to any section that accepts theme blocks;
+  the section's alignment settings place it.
+
+  @example
+  {% content_for 'block', type: 'mnj-sticker', id: 'sticker' %}
+{% enddoc %}
+
+{% if block.settings.text != blank %}
+  <div
+    class="mnj-sticker"
+    style="
+      --mnj-sticker-size: {{ block.settings.size }}px;
+      --mnj-sticker-rotation: {{ block.settings.rotation }}deg;
+      --mnj-sticker-offset: {{ block.settings.offset }}px;
+      --mnj-sticker-background: {{ block.settings.background_color }};
+      --mnj-sticker-color: {{ block.settings.text_color }};
+    "
+    {{ block.shopify_attributes }}
+  >
+    {{ block.settings.text | escape }}
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .mnj-sticker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    width: var(--mnj-sticker-size);
+    height: var(--mnj-sticker-size);
+    margin-inline-end: var(--mnj-sticker-offset);
+    padding: var(--padding-lg);
+    border-radius: 50%;
+    background: var(--mnj-sticker-background);
+    color: var(--mnj-sticker-color);
+    font-family: var(--font-heading--family);
+    font-size: var(--font-size--lg);
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+    overflow-wrap: anywhere;
+    transform: rotate(var(--mnj-sticker-rotation));
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "MN JADE sticker",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "handmade in mn ✿"
+    },
+    {
+      "type": "range",
+      "id": "size",
+      "label": "Size",
+      "min": 96,
+      "max": 220,
+      "step": 4,
+      "unit": "px",
+      "default": 148
+    },
+    {
+      "type": "range",
+      "id": "rotation",
+      "label": "Rotation",
+      "min": -20,
+      "max": 20,
+      "step": 1,
+      "unit": "°",
+      "default": -8
+    },
+    {
+      "type": "range",
+      "id": "offset",
+      "label": "Space from the edge",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "{{ settings.color_palette.foreground }}"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "{{ settings.color_palette.background }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MN JADE sticker"
+    }
+  ]
+}
+{% endschema %}

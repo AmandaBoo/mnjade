@@ -1,0 +1,340 @@
+/*
+  MN JADE overrides on top of Horizon, loaded last from layout/theme.liquid.
+  Settings and templates do everything they can; this file holds the rest.
+  See CUSTOMIZATIONS.md.
+*/
+
+/* Global: body text 15px (the type setting only offers 14 or 16) */
+:root {
+  --font-size--paragraph: 0.9375rem;
+}
+
+/* Global: 24px inset for page-width sections on desktop */
+@media screen and (min-width: 750px) {
+  .page-width-narrow {
+    --page-margin: max(24px, var(--safe-area-inset-left, 0px), var(--safe-area-inset-right, 0px));
+  }
+}
+
+/* Global: interface labels that come from locale files stay lowercase */
+.button,
+.button-secondary,
+.cart-totals__total-label,
+.cart-totals__tax-note,
+.cart-items__remove {
+  text-transform: lowercase;
+}
+
+/* Global: circular product images on cards and in the product gallery */
+.card-gallery img,
+media-gallery img:not(.dialog-zoomed-gallery *) {
+  border-radius: 50%;
+}
+
+/* Header: text logo, 30px Quicksand with wide tracking */
+.header-logo {
+  font-family: var(--font-heading--family);
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+/* Header: smaller logo on phones so it clears the icon flowers */
+@media screen and (max-width: 749px) {
+  .header-logo {
+    font-size: 1.5rem;
+  }
+}
+
+/* Header: 36px above the logo, 12px to the nav, 24px below it */
+[data-menu-style='menu'] .header__row--top .header__columns {
+  --padding-block-start: 36px;
+  --padding-block-end: 6px;
+}
+
+[data-menu-style='menu'] .header__row--bottom .header__columns {
+  --padding-block-start: 6px;
+  --padding-block-end: 24px;
+}
+
+/* Header: 15px semibold nav links, all full black */
+.menu-list {
+  --opacity-subdued-text: 1;
+}
+
+.menu-list__link {
+  --menu-top-level-font-size-desktop: 0.9375rem;
+  --menu-top-level-font-weight: 600;
+  --gap-sm: 16px;
+
+  min-height: 40px;
+  border-block-end: 2px solid transparent;
+}
+
+/* Header: the current page's link is underlined */
+.menu-list__link--active {
+  border-block-end-color: var(--color-foreground);
+}
+
+/* Header: search, account and cart on 48px soft gray flowers */
+.header__column--right,
+.header__column--right header-actions {
+  gap: 10px;
+  margin-inline-start: 0;
+}
+
+[data-menu-style='menu'] .header__column--right {
+  align-self: start;
+  margin-block-end: -4px; /* the 48px flowers should not make the logo row taller */
+  padding-inline-end: 8px;
+}
+
+.header__column--right .search-action {
+  margin-inline: 0;
+}
+
+.header__columns .header-actions__action svg {
+  width: 18px;
+  height: 18px;
+}
+
+.header-actions__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='%23e6e6e6'%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11'/%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11' transform='rotate(72 24 24)'/%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11' transform='rotate(144 24 24)'/%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11' transform='rotate(216 24 24)'/%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11' transform='rotate(288 24 24)'/%3E%3Ccircle cx='24' cy='24' r='13'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Header: count badge on the flower's corner, also showing 0 */
+.header-actions__cart-icon {
+  --cart-bubble-size: 18px;
+  --cart-bubble-top: -6px;
+  --cart-bubble-right: -6px;
+}
+
+.header-actions__cart-icon .cart-bubble__text {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+[dir] .header-actions__cart-icon.header-actions__cart-icon--has-cart svg {
+  mask: none;
+}
+
+.header-actions__cart-icon .cart-bubble.visually-hidden {
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+}
+
+.cart-bubble__text-count.hidden {
+  /* !important: base.css hides .hidden with !important; Horizon hides the count at 0 */
+  display: inline !important;
+}
+
+/* Home: empty "follow along" image slots keep their full size */
+.image-block .placeholder-image {
+  width: 100%;
+}
+
+/* Home: inset hero panel, about 680px tall */
+.hero {
+  margin: var(--page-margin) var(--page-margin) 0;
+  min-height: min(680px, 80svh);
+  border-radius: 32px;
+  overflow: hidden;
+}
+
+/* Shop: inset 480px banner */
+[data-template^='collection'] .image-block,
+[data-template^='collection'] .image-block img,
+[data-template^='collection'] .image-block .placeholder-image {
+  width: 100%;
+  height: min(480px, 60svh);
+  aspect-ratio: auto;
+  object-fit: cover;
+}
+
+/* Shop: collection links as underlined text tabs */
+collection-links-component {
+  --gap-2xl: 8px;
+}
+
+.collection-links__link {
+  --min-font-size: 0.9375rem;
+  --max-font-size: 0.9375rem;
+
+  align-items: center;
+  min-height: 40px;
+  padding-inline: 16px;
+  border-block-end: 2px solid transparent;
+}
+
+.collection-links__link[aria-current='true'] {
+  border-block-end-color: var(--color-foreground);
+}
+
+/* Shop: drop the hover image that the text layout adds */
+.collection-links__link .collection-links__image {
+  display: none;
+}
+
+/* Shop: Horizon's empty message is replaced by the mnj-empty-collection block */
+[data-template^='collection'] .main-collection-grid__empty {
+  display: none;
+}
+
+/* Product: 640px gallery and 420px details card, centered, 56px apart */
+@media screen and (min-width: 750px) {
+  .product-information__grid {
+    --gap: 56px;
+
+    width: 100%;
+    max-width: 1116px;
+    justify-self: center;
+  }
+
+  /* #MainContent: Horizon's wide-screen 2fr/1fr rule has very high specificity */
+  #MainContent .product-information--media-left {
+    grid-template-columns: minmax(0, 1fr) 448px;
+  }
+}
+
+/* Product: thumbnails navigate the gallery, so the arrows over the circle go */
+media-gallery slideshow-arrows {
+  display: none;
+}
+
+/* Product: plain "add to cart" label, no icon */
+.add-to-cart-icon {
+  display: none;
+}
+
+/* Product: "more little friends" centered, up to 340px per product */
+.block-resource-list .resource-list--grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.block-resource-list .resource-list__item {
+  flex: 1 1 260px;
+  max-width: 340px;
+}
+
+/* Cart: 720px items beside a 380px summary, centered, 56px apart */
+@media screen and (min-width: 750px) {
+  .cart-page {
+    width: 100%;
+    max-width: 1156px;
+    margin-inline: auto;
+    grid-template-columns: minmax(0, 720px) 380px;
+    gap: 0 56px;
+    justify-content: center;
+  }
+}
+
+/* Cart: summary panel keeps its padding and #F2F2F2 fill on phones too
+   (Horizon drops the block's background color below 750px) */
+.cart-summary__inner.cart-summary__inner {
+  padding: 32px;
+  background-color: #f2f2f2;
+}
+
+/* Cart: rows with lines above and below, Quicksand names, no repeated unit price */
+.cart-items__table {
+  border-block-start: 1px solid var(--color-input-border);
+}
+
+.cart-items--dividers .cart-items__table tbody .cart-items__table-row {
+  margin-block-end: 0;
+  padding-block: 24px;
+  border-block-end: 1px solid var(--color-input-border);
+}
+
+.cart-items__title {
+  font-family: var(--font-heading--family);
+  font-size: var(--font-size--lg);
+  font-weight: 600;
+}
+
+.cart-items__unit-price-wrapper {
+  display: none;
+}
+
+.cart-items__price {
+  font-size: var(--font-size--md);
+  font-weight: 600;
+}
+
+/* Cart: no rule at the top of the summary panel */
+.cart-totals:not(:has(.cart-actions)) {
+  padding-block-start: 0;
+  border-block-start: 0;
+}
+
+/* Cart: 112px thumbnails (circle comes from the cart thumbnail radius setting) */
+.cart-items__media-container {
+  max-width: 112px;
+}
+
+/* Cart: "remove" as a text link instead of the trash icon */
+.cart-items__remove {
+  flex-shrink: 0;
+  width: auto;
+  color: var(--color-foreground-muted);
+  font-size: var(--font-size--xs);
+  text-decoration: underline;
+}
+
+.cart-items__remove svg {
+  display: none;
+}
+
+.cart-items__remove .visually-hidden {
+  /* !important: base.css sets position with !important on .visually-hidden */
+  position: static !important;
+  width: auto;
+  height: auto;
+  margin: 0;
+  clip: auto;
+}
+
+/* Cart: "keep shopping" underlined link, hidden on the empty cart's own button */
+.cart-page__more-blocks {
+  margin-block-start: 32px;
+}
+
+.cart-page__more-blocks .button-unstyled {
+  font-weight: 600;
+  text-underline-offset: 6px;
+}
+
+.cart-page--empty .cart-page__more-blocks {
+  display: none;
+}
+
+/* Footer: "faqs ✿ shipping" on one centered row, menu title hidden */
+.footer-content .menu__heading {
+  display: none;
+}
+
+.footer-content .menu ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Footer: centered copyright line */
+.utilities--blocks-1 > * {
+  justify-self: center;
+  text-align: center;
+}
