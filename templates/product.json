@@ -193,6 +193,7 @@
               "blocks": {
                 "quantity": {
                   "type": "quantity",
+                  "disabled": true,
                   "static": true,
                   "settings": {
                     "input_style": "default",
@@ -202,8 +203,7 @@
                     "border_width": 1,
                     "border_radius": 0
                   },
-                  "blocks": {},
-                  "disabled": true
+                  "blocks": {}
                 },
                 "add-to-cart": {
                   "type": "add-to-cart",
@@ -218,10 +218,10 @@
                 },
                 "accelerated-checkout": {
                   "type": "accelerated-checkout",
+                  "disabled": true,
                   "static": true,
                   "settings": {},
-                  "blocks": {},
-                  "disabled": true
+                  "blocks": {}
                 }
               },
               "block_order": []
@@ -236,7 +236,6 @@
           ]
         }
       },
-      "block_order": [],
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
@@ -342,9 +341,9 @@
                         "card_price": {
                           "type": "price",
                           "settings": {
+                            "type_preset": "paragraph",
                             "width": "100%",
                             "alignment": "center",
-                            "type_preset": "paragraph",
                             "text_color": "{{ settings.color_palette.color1 }}"
                           },
                           "blocks": {}
@@ -375,8 +374,8 @@
         "related_panel"
       ],
       "settings": {
-        "section_width": "page-width",
         "horizontal_alignment_flex_direction_column": "center",
+        "section_width": "page-width",
         "padding-block-start": 0,
         "padding-block-end": 48
       }

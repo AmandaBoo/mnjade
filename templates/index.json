@@ -166,14 +166,14 @@
                 "background_media": "none",
                 "video_position": "cover",
                 "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
                 "toggle_overlay": false,
                 "overlay_color": "#00000026",
                 "overlay_style": "solid",
                 "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
                 "open_in_new_tab": false,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -220,11 +220,11 @@
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "none",
+                    "text_color": "{{ settings.color_palette.color1 }}",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
-                    "padding-inline-end": 0,
-                    "text_color": "{{ settings.color_palette.color1 }}"
+                    "padding-inline-end": 0
                   },
                   "blocks": {}
                 }
@@ -249,9 +249,12 @@
           }
         }
       },
+      "block_order": [
+        "shop_all"
+      ],
       "name": "t:names.product_list",
       "settings": {
-        "collection": "all",
+        "collection": "shop",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 3,
@@ -268,10 +271,7 @@
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 96,
         "padding-block-end": 48
-      },
-      "block_order": [
-        "shop_all"
-      ]
+      }
     },
     "follow_along": {
       "type": "section",
@@ -390,8 +390,8 @@
         "follow_panel"
       ],
       "settings": {
-        "section_width": "page-width",
         "horizontal_alignment_flex_direction_column": "center",
+        "section_width": "page-width",
         "padding-block-start": 48,
         "padding-block-end": 48
       }
