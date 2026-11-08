@@ -9,161 +9,132 @@
  */
 {
   "sections": {
-    "section": {
+    "contact_heading": {
       "type": "section",
-      "blocks": {
-        "text_dWXrnm": {
-          "type": "text",
-          "settings": {
-            "text": "{{ closest.page.content }}",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "contact_form_jWxXkm": {
-          "type": "contact-form",
-          "settings": {
-            "width": "custom",
-            "custom_width": 60,
-            "width_mobile": "custom",
-            "custom_width_mobile": 100,
-            "input_style": "default",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "submit-button": {
-              "type": "contact-form-submit-button",
-              "static": true,
-              "settings": {
-                "label": "Send",
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": []
-        }
-      },
-      "block_order": [
-        "text_dWXrnm",
-        "contact_form_jWxXkm"
-      ],
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "center",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "page-width",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "{{ settings.color_palette.background }}",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 48,
-        "padding-block-end": 48
-      }
-    },
-    "main": {
-      "type": "main-page",
       "blocks": {
         "title": {
           "type": "text",
-          "name": "t:names.title",
           "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
+            "text": "<h1>✿ say hi ✿</h1>",
             "width": "100%",
-            "max_width": "normal",
             "alignment": "center",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "content": {
-          "type": "text",
-          "name": "t:names.content",
-          "settings": {
-            "text": "{{ closest.page.content }}",
-            "width": "100%",
-            "max_width": "narrow",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "type_preset": "h1"
+          }
         }
       },
       "block_order": [
-        "title",
-        "content"
+        "title"
       ],
       "settings": {
+        "section_width": "page-width",
         "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
         "gap": 32,
-        "padding-block-start": 40,
+        "padding-block-start": 64,
         "padding-block-end": 0
+      }
+    },
+    "contact_main": {
+      "type": "section",
+      "blocks": {
+        "form_panel": {
+          "type": "group",
+          "blocks": {
+            "form": {
+              "type": "contact-form",
+              "settings": {
+                "width": "custom",
+                "custom_width": 100,
+                "width_mobile": "custom",
+                "custom_width_mobile": 100
+              },
+              "blocks": {
+                "submit-button": {
+                  "type": "contact-form-submit-button",
+                  "static": true,
+                  "settings": {
+                    "label": "send ✿",
+                    "style_class": "button"
+                  }
+                }
+              }
+            }
+          },
+          "block_order": [
+            "form"
+          ],
+          "settings": {
+            "content_direction": "column",
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "gap": 20,
+            "width": "custom",
+            "width_mobile": "fill",
+            "custom_width": 45,
+            "background_color": "{{ settings.color_palette.color3 }}",
+            "border_radius": 32,
+            "padding-block-start": 40,
+            "padding-block-end": 40,
+            "padding-inline-start": 40,
+            "padding-inline-end": 40
+          }
+        },
+        "aside": {
+          "type": "group",
+          "blocks": {
+            "instagram": {
+              "type": "text",
+              "settings": {
+                "text": "<p><strong>instagram</strong></p><p><a href=\"\">@[handle]</a></p>",
+                "width": "100%",
+                "alignment": "left",
+                "type_preset": "paragraph"
+              }
+            },
+            "contact_image": {
+              "type": "image",
+              "settings": {
+                "image_ratio": "square",
+                "width": "fit-content",
+                "width_mobile": "fit-content"
+              }
+            }
+          },
+          "block_order": [
+            "instagram",
+            "contact_image"
+          ],
+          "settings": {
+            "content_direction": "column",
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "gap": 28,
+            "width": "custom",
+            "width_mobile": "fill",
+            "custom_width": 26,
+            "padding-block-start": 40,
+            "padding-block-end": 40,
+            "padding-inline-start": 40,
+            "padding-inline-end": 40
+          }
+        }
+      },
+      "block_order": [
+        "form_panel",
+        "aside"
+      ],
+      "settings": {
+        "section_width": "page-width",
+        "content_direction": "row",
+        "horizontal_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "padding-block-start": 56,
+        "padding-block-end": 96,
+        "horizontal_alignment": "center",
+        "vertical_alignment": "flex-start"
       }
     }
   },
   "order": [
-    "main",
-    "section"
+    "contact_heading",
+    "contact_main"
   ]
 }

@@ -1,0 +1,201 @@
+{
+  "sections": {
+    "about_heading": {
+      "type": "section",
+      "blocks": {
+        "title": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>✿ {{ closest.page.title }} ✿</h1>",
+            "width": "100%",
+            "alignment": "center",
+            "type_preset": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "title"
+      ],
+      "settings": {
+        "section_width": "page-width",
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "padding-block-start": 64,
+        "padding-block-end": 0
+      }
+    },
+    "about_banner": {
+      "type": "section",
+      "blocks": {
+        "about_image": {
+          "type": "image",
+          "settings": {
+            "image_ratio": "landscape",
+            "width": "fill",
+            "width_mobile": "fill",
+            "border_radius": 32
+          }
+        }
+      },
+      "block_order": [
+        "about_image"
+      ],
+      "settings": {
+        "section_width": "page-width",
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "padding-block-start": 24,
+        "padding-block-end": 0
+      }
+    },
+    "about_story": {
+      "type": "section",
+      "blocks": {
+        "story": {
+          "type": "group",
+          "blocks": {
+            "story_heading": {
+              "type": "text",
+              "settings": {
+                "text": "<h2>little jade, made in mn</h2>",
+                "width": "100%",
+                "alignment": "center",
+                "type_preset": "h2"
+              }
+            },
+            "story_body": {
+              "type": "text",
+              "settings": {
+                "text": "{{ closest.page.content }}",
+                "width": "100%",
+                "alignment": "center",
+                "type_preset": "rte"
+              }
+            }
+          },
+          "block_order": [
+            "story_heading",
+            "story_body"
+          ],
+          "settings": {
+            "content_direction": "column",
+            "horizontal_alignment_flex_direction_column": "center",
+            "gap": 24,
+            "width": "custom",
+            "width_mobile": "fill",
+            "custom_width": 46
+          }
+        }
+      },
+      "block_order": [
+        "story"
+      ],
+      "settings": {
+        "section_width": "page-width",
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "padding-block-start": 72,
+        "padding-block-end": 32
+      }
+    },
+    "about_circles": {
+      "type": "section",
+      "blocks": {
+        "circles": {
+          "type": "group",
+          "blocks": {
+            "circle_1": {
+              "type": "image",
+              "settings": {
+                "image_ratio": "square",
+                "width": "custom",
+                "custom_width": 21,
+                "width_mobile": "custom",
+                "custom_width_mobile": 80
+              }
+            },
+            "circle_2": {
+              "type": "image",
+              "settings": {
+                "image_ratio": "square",
+                "width": "custom",
+                "custom_width": 21,
+                "width_mobile": "custom",
+                "custom_width_mobile": 80
+              }
+            },
+            "circle_3": {
+              "type": "image",
+              "settings": {
+                "image_ratio": "square",
+                "width": "custom",
+                "custom_width": 21,
+                "width_mobile": "custom",
+                "custom_width_mobile": 80
+              }
+            }
+          },
+          "block_order": [
+            "circle_1",
+            "circle_2",
+            "circle_3"
+          ],
+          "settings": {
+            "content_direction": "row",
+            "horizontal_alignment_flex_direction_column": "center",
+            "gap": 32,
+            "width": "fill",
+            "width_mobile": "fill",
+            "horizontal_alignment": "center",
+            "vertical_on_mobile": false
+          }
+        }
+      },
+      "block_order": [
+        "circles"
+      ],
+      "settings": {
+        "section_width": "page-width",
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "padding-block-start": 40,
+        "padding-block-end": 96
+      }
+    },
+    "about_cta": {
+      "type": "section",
+      "blocks": {
+        "see_pieces": {
+          "type": "button",
+          "settings": {
+            "label": "see the pieces ✿",
+            "link": "shopify://collections/shop",
+            "style_class": "button"
+          }
+        }
+      },
+      "block_order": [
+        "see_pieces"
+      ],
+      "settings": {
+        "section_width": "page-width",
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "padding-block-start": 0,
+        "padding-block-end": 96
+      }
+    }
+  },
+  "order": [
+    "about_heading",
+    "about_banner",
+    "about_story",
+    "about_circles",
+    "about_cta"
+  ]
+}

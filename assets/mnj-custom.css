@@ -366,7 +366,49 @@ media-gallery slideshow-arrows {
   display: none;
 }
 
-/* Footer: "faqs ✿ shipping" on one centered row, menu title hidden */
+/* Pages: "say hi" link under shipping, refunds and faqs (templates/page.info.json) */
+[id$='__say_hi'] a {
+  border-block-end: 2px solid var(--color-foreground);
+  color: var(--color-foreground);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* About: 520px rounded banner and three circular photos (templates/page.about.json) */
+[id$='__about_banner'] .image-block,
+[id$='__about_banner'] .image-block img,
+[id$='__about_banner'] .placeholder-image {
+  width: 100%;
+  height: min(520px, 60svh);
+  aspect-ratio: auto;
+  object-fit: cover;
+}
+
+[id$='__about_circles'] .image-block img,
+[id$='__about_circles'] .placeholder-image,
+[id$='__contact_main'] .image-block img,
+[id$='__contact_main'] .placeholder-image {
+  border-radius: 50%;
+}
+
+[id$='__about_circles'] .image-block {
+  max-width: 300px;
+}
+
+/* Contact: no phone field, a 160px circle photo, lowercase placeholders */
+#ContactForm-phone {
+  display: none;
+}
+
+[id$='__contact_main'] .image-block {
+  width: 160px;
+}
+
+.contact-form__input::placeholder {
+  text-transform: lowercase;
+}
+
+/* Footer: footer menu links on one centered row, menu title hidden */
 .footer-content .menu__heading {
   display: none;
 }

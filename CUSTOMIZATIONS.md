@@ -57,6 +57,12 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
   `more little friends` panel using the recommendations block. Quantity and accelerated
   checkout are disabled static blocks. Sticky add to cart is off.
 - `templates/cart.json`: `your cart` title, gray summary panel, `keep shopping` link.
+- `templates/page.info.json` (new): shipping, refunds and faqs. `✿ page title ✿`, the page's
+  text in a gray panel, and a `say hi` link to the contact page.
+- `templates/page.about.json` (new): about. Title, a 520px banner image, a heading over the
+  page's text, three circular photos and a `see the pieces ✿` button.
+- `templates/page.contact.json`: `✿ say hi ✿`, Horizon's contact form in a gray panel with the
+  phone field hidden, and an instagram and photo column.
 
 ## Redirects to the shop page
 
@@ -73,7 +79,11 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
 
 - **Store name:** `MN JADE` in Settings. The logo and copyright line read it.
 - **`main-menu`:** shop, about.
-- **`footer` menu:** `faqs ✿`, `shipping`. The ✿ is part of the first link's title.
+- **`footer` menu:** `shipping ✿`, `refunds ✿`, `faqs ✿`, `contact`. Each ✿ is part of the link
+  title before it.
+- **Pages** (Online Store > Pages), each with its template: `shipping`, `refunds & exchanges` and
+  `faqs` use `info`; `about` uses `about`; `contact` uses `contact`. The page's own text fills the
+  panel on info pages and the story on about.
 - **Collections:** handles `shop`, `necklaces`, `bracelets`, `earrings`. The tab label is the
   collection's title. The shop tabs show "Collection title" placeholders if these are missing.
 - **Interface wording:** Horizon's locale strings can be changed in Online Store > Themes >
@@ -82,6 +92,9 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
   `see everything`.
 
 ## Empty settings to fill in the theme editor
+
+- About page banner and its three circle photos, and the contact page photo
+- Contact page instagram text, which starts as `@[handle]`
 
 - Home hero image
 - The four `follow along` images
@@ -95,6 +108,10 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
 - **Cart remove link:** beside the quantity stepper, not under the product name.
 - **Product name case:** taken from the product title as typed.
 - **Copyright line:** includes the store name, because Horizon always adds it.
+- **Contact form:** no "what's it about?" dropdown, and placeholders instead of labels above
+  each field, because that's how Horizon's form is built.
+- **Shipping and refunds:** regular pages. Checkout still links to Shopify's policy pages, so
+  keep the same text in Settings > Policies.
 - **Search overlay:** no "see everything" link until something is typed, because Horizon only
   shows that button with results. Its label and the search placeholder are locale strings.
 - **Shop tabs:** links to separate collections, chosen because `collection-links` already
@@ -131,6 +148,8 @@ size, and the menu's font size and weight.
    - **Product page:** `.product-information__grid` columns, recommendations layout
    - **Shop page:** `.collection-links__link` tabs, `.main-collection-grid__empty`
    - **Cart:** `.cart-items__*` rows, `.cart-summary__inner`, the text "remove" link
+   - **Pages:** sections are styled by their template key (`__say_hi`, `__about_banner`,
+     `__about_circles`, `__contact_main`), and the phone field by `#ContactForm-phone`
    - **Search overlay:** `.search-modal__content`, `.predictive-search-*`, `.resource-card__*`.
      Check it open, with results, with no results, and at phone width
 5. The "0" cart badge and the "remove" link override `.hidden` and `.visually-hidden` from
