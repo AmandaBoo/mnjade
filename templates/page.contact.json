@@ -198,7 +198,7 @@
             "instagram": {
               "type": "text",
               "settings": {
-                "text": "<p><strong>instagram</strong></p><p><a href=\"https://www.instagram.com/mnjade\" target=\"_blank\" title=\"https://www.instagram.com/mnjade\">@mnjade</a></p>",
+                "text": "<p><strong>instagram</strong></p><p><a href=\"https://www.instagram.com/mnjade_\" target=\"_blank\" title=\"https://www.instagram.com/mnjade_\">@mnjade</a></p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
