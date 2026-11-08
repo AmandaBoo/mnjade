@@ -374,6 +374,41 @@ media-gallery slideshow-arrows {
   text-decoration: none;
 }
 
+/* Policies (shipping, refunds): Shopify's own pages, styled like the info pages */
+.shopify-policy__container {
+  box-sizing: border-box;
+  max-width: 960px;
+  margin-inline: auto;
+  padding: 64px 24px 96px;
+}
+
+.shopify-policy__title {
+  margin-block-end: 56px;
+  text-align: center;
+}
+
+.shopify-policy__title h1 {
+  margin: 0;
+  font-size: var(--font-h1--size);
+  text-transform: lowercase;
+}
+
+/* The flowers are decoration, so they're hidden from screen readers */
+.shopify-policy__title h1::before {
+  content: '✿ ' / '';
+}
+
+.shopify-policy__title h1::after {
+  content: ' ✿' / '';
+}
+
+.shopify-policy__body {
+  padding: 40px;
+  border-radius: 32px;
+  background-color: #f2f2f2;
+  line-height: 1.8;
+}
+
 /* About: 520px rounded banner and three circular photos (templates/page.about.json) */
 [id$='__about_banner'] .image-block,
 [id$='__about_banner'] .image-block img,

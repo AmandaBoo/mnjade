@@ -81,8 +81,8 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
 - **`main-menu`:** shop, about.
 - **`footer` menu:** `shipping ✿`, `refunds ✿`, `faqs ✿`, `contact`. Each ✿ is part of the link
   title before it.
-- **Pages** (Online Store > Pages), each with its template: `shipping`, `refunds & exchanges` and
-  `faqs` use `info`; `about` uses `about`; `contact` uses `contact`. The page's own text fills the
+- **Pages** (Online Store > Pages), each with its template: `faqs` uses `info`; `about` uses
+  `about`; `contact` uses `contact`. Shipping and refunds are Shopify policies instead. The page's own text fills the
   panel on info pages and the story on about.
 - **Collections:** handles `shop`, `necklaces`, `bracelets`, `earrings`. The tab label is the
   collection's title. The shop tabs show "Collection title" placeholders if these are missing.
@@ -110,8 +110,9 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
 - **Copyright line:** includes the store name, because Horizon always adds it.
 - **Contact form:** no "what's it about?" dropdown, and placeholders instead of labels above
   each field, because that's how Horizon's form is built.
-- **Shipping and refunds:** regular pages. Checkout still links to Shopify's policy pages, so
-  keep the same text in Settings > Policies.
+- **Shipping and refunds:** the footer links to Shopify's policy pages, so the text lives only in
+  Settings > Policies. The stylesheet gives them the info pages' look, but Shopify sets their
+  layout and titles, so they read "shipping policy" and "refund policy" and have no "say hi" link.
 - **Search overlay:** no "see everything" link until something is typed, because Horizon only
   shows that button with results. Its label and the search placeholder are locale strings.
 - **Shop tabs:** links to separate collections, chosen because `collection-links` already
@@ -127,7 +128,8 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
 Settings can't reach these, so change them in `assets/mnj-custom.css`:
 
 - `#e6e6e6`: the flower behind the header and search icons, inside the `--mnj-flower` SVG
-- `#f2f2f2`: the cart summary fill, needed because Horizon drops it on phones
+- `#f2f2f2`: the cart summary fill, needed because Horizon drops it on phones, and the policy
+  page panel, because policy pages don't get the theme's colour settings
 - `#555555`: prices in the search overlay
 - `17 17 17` at 0.35: the dim behind the search overlay
 
@@ -148,6 +150,8 @@ size, and the menu's font size and weight.
    - **Product page:** `.product-information__grid` columns, recommendations layout
    - **Shop page:** `.collection-links__link` tabs, `.main-collection-grid__empty`
    - **Cart:** `.cart-items__*` rows, `.cart-summary__inner`, the text "remove" link
+   - **Policy pages:** `.shopify-policy__container`, `__title` and `__body`, which come from
+     Shopify rather than Horizon
    - **Pages:** sections are styled by their template key (`__say_hi`, `__about_banner`,
      `__about_circles`, `__contact_main`), and the phone field by `#ContactForm-phone`
    - **Search overlay:** `.search-modal__content`, `.predictive-search-*`, `.resource-card__*`.
