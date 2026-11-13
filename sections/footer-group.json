@@ -34,19 +34,6 @@
                 "padding-block-end": 32
               }
             },
-            "footer_brand": {
-              "type": "text",
-              "settings": {
-                "text": "<p>MN JADE</p>",
-                "width": "100%",
-                "alignment": "center",
-                "type_preset": "custom",
-                "font": "var(--font-heading--family)",
-                "font_size": "1rem",
-                "letter_spacing": "loose",
-                "text_color": "{{ settings.color_palette.color1 }}"
-              }
-            },
             "footer_links": {
               "type": "menu",
               "settings": {
@@ -56,11 +43,20 @@
                 "text_color": "{{ settings.color_palette.color2 }}",
                 "menu_spacing": 0
               }
+            },
+            "footer_mark": {
+              "type": "image",
+              "settings": {
+                "image_ratio": "adapt",
+                "width": "fit-content",
+                "width_mobile": "fit-content",
+                "image": "shopify://shop_images/mn-jade-mark.png"
+              }
             }
           },
           "block_order": [
             "footer_divider",
-            "footer_brand",
+            "footer_mark",
             "footer_links"
           ]
         }

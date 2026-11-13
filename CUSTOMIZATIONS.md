@@ -47,8 +47,8 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
   header off; 1px color4 bottom border; text-style menu; phone navigation bar on, with the
   hamburger hidden in the stylesheet.
 - `sections/footer-group.json`: newsletter section, policy list and old columns removed;
-  one centered group with a divider, brand text and the `footer` menu; copyright with
-  "Powered by Shopify" off.
+  one centered group with a divider, the flower mark image and the `footer` menu; copyright
+  with "Powered by Shopify" off.
 - `templates/index.json`: hero with the sticker, `✿ favorites ✿` product list with a
   `shop all` button, `follow along` panel with four image blocks and an `instagram` button.
 - `templates/collection.json`: `✿ shop ✿` heading, `collection-links` tabs, empty message, product grid with filtering,
@@ -77,7 +77,12 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
 
 ## Set in the Shopify admin, not in this repo
 
-- **Store name:** `MN JADE` in Settings. The logo and copyright line read it.
+- **Store name:** `MN JADE` in Settings. The copyright line and the logo's alt text read it.
+- **Logo files** in Content > Files: `mn-jade-logo.png` (header), `mn-jade-mark.png` (footer)
+  and `mn-jade-favicon.png`. The theme points at these names, so replace a file by uploading
+  one with the same name, or pick a new one in the theme editor. They're cropped from the
+  design canvas; the wordmark font, Fredoka, is drawn into the logo image, so the site's text
+  fonts don't change.
 - **`main-menu`:** shop, about.
 - **`footer` menu:** `shipping ✿`, `refunds ✿`, `faqs ✿`, `contact`. Each ✿ is part of the link
   title before it.

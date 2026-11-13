@@ -34,7 +34,7 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   border-radius: 50%;
 }
 
-/* Header: text logo, 30px Quicksand with wide tracking */
+/* Header: fallback text logo, only shown if the logo image is removed */
 .header-logo {
   font-family: var(--font-heading--family);
   font-size: 1.875rem;
@@ -49,14 +49,14 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   }
 }
 
-/* Header: 36px above the logo, 12px to the nav, 24px below it */
+/* Header: 36px above the icons, 32px between the logo and the nav, 24px below it */
 [data-menu-style='menu'] .header__row--top .header__columns {
   --padding-block-start: 36px;
-  --padding-block-end: 6px;
+  --padding-block-end: 16px;
 }
 
 [data-menu-style='menu'] .header__row--bottom .header__columns {
-  --padding-block-start: 6px;
+  --padding-block-start: 16px;
   --padding-block-end: 24px;
 }
 
@@ -441,6 +441,14 @@ media-gallery slideshow-arrows {
 
 .contact-form__input::placeholder {
   text-transform: lowercase;
+}
+
+/* Footer: the flower mark, 41px tall and slightly faded */
+.footer-content .image-block img,
+.footer-content .image-block .placeholder-image {
+  width: auto;
+  height: 41px;
+  opacity: 0.8;
 }
 
 /* Footer: footer menu links on one centered row, menu title hidden */
