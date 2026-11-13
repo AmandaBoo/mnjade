@@ -152,6 +152,14 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   background: var(--mnj-flower) center / contain no-repeat;
 }
 
+/* Header on phones: 40px flowers beside a 40px logo, so the sides don't outweigh the center */
+@media screen and (max-width: 749px) {
+  .header-actions__action {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 /* Header: count badge on the flower's corner, also showing 0 */
 .header-actions__cart-icon {
   --cart-bubble-size: 18px;
