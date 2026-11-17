@@ -223,7 +223,7 @@
             "tiktok": {
               "type": "text",
               "settings": {
-                "text": "<p><strong>tiktok</strong></p><p><a href=\"https://www.tiktok.com/@mnjade_\" target=\"_blank\" title=\"https://www.tiktok.com/@mnjade_\">@[mnjade_]</a></p>",
+                "text": "<p><strong>tiktok</strong></p><p><a href=\"https://www.tiktok.com/@mnjade_\" target=\"_blank\" title=\"https://www.tiktok.com/@mnjade_\">@mnjade_</a></p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
