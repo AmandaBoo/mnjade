@@ -513,29 +513,66 @@
                 "follow_image_4"
               ]
             },
-            "follow_button": {
-              "type": "button",
-              "settings": {
-                "label": "instagram",
-                "link": "https://www.instagram.com/mnjade_?srtk=ZWszMWVrZmphYm02&utm_source=qr",
-                "open_in_new_tab": false,
-                "style_class": "button-secondary",
-                "custom_button_background": "{{ settings.color_palette.foreground }}",
-                "custom_button_text": "{{ settings.color_palette.background }}",
-                "custom_button_border": "{{ settings.color_palette.background }}",
-                "link_text_color": "",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
+            "follow_buttons": {
+              "type": "group",
+              "blocks": {
+                "follow_button": {
+                  "type": "button",
+                  "settings": {
+                    "label": "instagram",
+                    "link": "https://www.instagram.com/mnjade_?srtk=ZWszMWVrZmphYm02&utm_source=qr",
+                    "open_in_new_tab": false,
+                    "style_class": "button-secondary",
+                    "custom_button_background": "{{ settings.color_palette.foreground }}",
+                    "custom_button_text": "{{ settings.color_palette.background }}",
+                    "custom_button_border": "{{ settings.color_palette.background }}",
+                    "link_text_color": "",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                },
+                "follow_tiktok": {
+                  "type": "button",
+                  "settings": {
+                    "label": "tiktok",
+                    "link": "https://www.tiktok.com/@mnjade_",
+                    "open_in_new_tab": false,
+                    "style_class": "button-secondary",
+                    "custom_button_background": "{{ settings.color_palette.foreground }}",
+                    "custom_button_text": "{{ settings.color_palette.background }}",
+                    "custom_button_border": "{{ settings.color_palette.background }}",
+                    "link_text_color": "",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                }
               },
-              "blocks": {}
+              "block_order": [
+                "follow_button",
+                "follow_tiktok"
+              ],
+              "settings": {
+                "content_direction": "row",
+                "vertical_on_mobile": false,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "center",
+                "gap": 12,
+                "width": "fill",
+                "width_mobile": "fill",
+                "height": "fit"
+              }
             }
           },
           "block_order": [
             "follow_heading",
             "follow_images",
-            "follow_button"
+            "follow_buttons"
           ]
         }
       },

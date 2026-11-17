@@ -52,7 +52,7 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
   one centered group with a divider, the flower mark image and the `footer` menu; copyright
   with "Powered by Shopify" off.
 - `templates/index.json`: hero with the sticker, `✿ favorites ✿` product list with a
-  `shop all` button, `follow along` panel with four image blocks and an `instagram` button.
+  `shop all` button, `follow along` panel with four image blocks and `instagram` and `tiktok` buttons side by side.
 - `templates/collection.json`: `✿ shop ✿` heading, `mnj-collection-tabs` tabs, empty message, product grid with filtering,
   sorting and grid density off, and a green circle with the logo and a `custom order form` label, linking to `/pages/custom`.
 - `templates/product.json`: carousel gallery with 72px thumbnails, bordered details card,
