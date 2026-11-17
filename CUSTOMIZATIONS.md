@@ -54,7 +54,7 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
 - `templates/index.json`: hero with the sticker, `✿ favorites ✿` product list with a
   `shop all` button, `follow along` panel with four image blocks and an `instagram` button.
 - `templates/collection.json`: `✿ shop ✿` heading, `mnj-collection-tabs` tabs, empty message, product grid with filtering,
-  sorting and grid density off, and a `something custom?` circle card linking to `/pages/custom`.
+  sorting and grid density off, and a green circle with the logo and a `custom order form` label, linking to `/pages/custom`.
 - `templates/product.json`: carousel gallery with 72px thumbnails, bordered details card,
   `more little friends` panel using the recommendations block. Quantity and accelerated
   checkout are disabled static blocks. Sticky add to cart is off.
@@ -62,11 +62,11 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
 - `templates/page.json` (the default page template, used by faqs and any new page): `✿ page title ✿`,
   the page's text in a gray panel, and a `say hi` link to the contact page. This replaced an `info` template.
 - `templates/page.about.json` (new): about. Title, a 520px banner image, a heading over the
-  page's text, three circular photos and a `see the pieces ✿` button.
+  page's text, three circular photos and a `shop all` button.
 - `templates/page.custom.json` (new): `✿ page title ✿`, the `mnj-custom-request-form` in a gray panel, and a
   `how it works` column with the page's text and a circle photo.
 - `templates/page.contact.json`: `✿ say hi ✿`, Horizon's contact form in a gray panel with the
-  phone field hidden, and an instagram and photo column.
+  phone field hidden, and an instagram, tiktok and photo column.
 
 ## Redirects to the shop page
 
@@ -90,7 +90,7 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
 - **`main-menu`:** shop, about.
 - **`footer` menu:** `shipping ✿`, `refunds ✿`, `faqs ✿`, `contact ✿`, `custom`. Each ✿ is part of the link
   title before it.
-- **Pages** (Online Store > Pages), each with its template: `faqs` uses the default; `about` uses
+- **Pages** (Online Store > Pages), each with its template: FAQs (handle `faq`) uses the default; `about` uses
   `about`; `contact` uses `contact`; `something custom` (handle `custom`) uses `custom`. Shipping and refunds are
   Shopify policies instead. The page's own text fills the panel on default pages, the story on about, and
   `how it works` on custom.
@@ -105,7 +105,7 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
 ## Empty settings to fill in the theme editor
 
 - About page banner and its three circle photos, and the contact and custom page photos
-- Contact page instagram text, which starts as `@[handle]`
+- Contact page tiktok text, which starts as `@[handle]`, and its link
 
 - Home hero image
 - The four `follow along` images
@@ -147,6 +147,8 @@ Settings can't reach these, so change them in `assets/mnj-custom.css`:
   page panel, because policy pages don't get the theme's colour settings
 - `#555555`: prices in the search overlay
 - `17 17 17` at 0.35: the dim behind the search overlay
+- White: the logo in the shop page's custom order circle, made white by a CSS filter, so any
+  image picked there shows as a white silhouette
 
 Two theme settings no longer do anything because the stylesheet overrides them: paragraph
 size, and the menu's font size and weight.
@@ -168,8 +170,8 @@ size, and the menu's font size and weight.
    - **Policy pages:** `.shopify-policy__container`, `__title` and `__body`, which come from
      Shopify rather than Horizon
    - **Pages:** sections are styled by their template key (`__say_hi`, `__about_banner`,
-     `__about_circles`, `__contact_main`, `__custom_main`, and `__custom_card` on the shop page, which also
-     relies on `.group-block__link`), and the phone field by `#ContactForm-phone`
+     `__about_circles`, `__contact_main`, `__custom_main`, and `__custom_card` on the shop page, whose
+     label link is stretched over the card), and the phone field by `#ContactForm-phone`
    - **Search overlay:** `.search-modal__content`, `.predictive-search-*`, `.resource-card__*`.
      Check it open, with results, with no results, and at phone width
 5. The "0" cart badge and the "remove" link override `.hidden` and `.visually-hidden` from

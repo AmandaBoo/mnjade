@@ -413,7 +413,7 @@
         "see_pieces": {
           "type": "button",
           "settings": {
-            "label": "see the pieces ✿",
+            "label": "shop all",
             "link": "shopify://collections/shop",
             "open_in_new_tab": false,
             "style_class": "button",

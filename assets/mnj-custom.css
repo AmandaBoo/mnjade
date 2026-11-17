@@ -206,9 +206,11 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   display: none;
 }
 
-/* Shop: "something custom?" card under the grid, sized like a product card */
-[id$='__custom_card'] .group-block:has(> .group-block__link) {
-  width: min(100%, var(--mnj-card-width, 340px));
+/* Shop: custom order card under the grid, sized like a product card. Its label is the
+   link, stretched over the whole card so the circle is clickable too */
+[id$='__custom_card'] .group-block:has(.group-block) {
+  position: relative;
+  width: min(100%, 312px);
 }
 
 [id$='__custom_card'] .group-block .group-block {
@@ -216,17 +218,42 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   border-radius: 50%;
 }
 
-[id$='__custom_card'] .group-block .group-block p {
-  font-size: 2.75rem;
-  line-height: 1;
+[id$='__custom_card'] .image-block img,
+[id$='__custom_card'] .placeholder-image {
+  width: auto;
+  height: 80px;
 }
 
-[id$='__custom_card'] .group-block .group-block h3 {
-  font-size: 1.375rem;
+/* The logo image is black; the filter turns it white on the green circle */
+[id$='__custom_card'] .image-block img {
+  filter: brightness(0) invert(1);
 }
 
-[id$='__custom_card'] .group-block__link:hover ~ * {
+[id$='__custom_card'] .text-block a {
+  color: inherit;
+  text-decoration: none;
+}
+
+[id$='__custom_card'] .text-block a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+[id$='__custom_card'] .text-block a:hover {
   color: var(--color-foreground-muted);
+}
+
+/* Phones: half the row, like the two-column product grid and its 12px gap */
+@media screen and (max-width: 749px) {
+  [id$='__custom_card'] .group-block:has(.group-block) {
+    width: calc((100% - 12px) / 2);
+  }
+
+  [id$='__custom_card'] .image-block img,
+  [id$='__custom_card'] .placeholder-image {
+    height: 48px;
+  }
 }
 
 /* Product: 640px gallery and 420px details card, centered, 56px apart */
