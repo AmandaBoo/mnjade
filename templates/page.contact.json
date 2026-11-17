@@ -223,7 +223,7 @@
             "tiktok": {
               "type": "text",
               "settings": {
-                "text": "<p><strong>tiktok</strong></p><p>@[handle]</p>",
+                "text": "<p><strong>tiktok</strong></p><p><a href=\"https://www.tiktok.com/@mnjade_\" target=\"_blank\" title=\"https://www.tiktok.com/@mnjade_\">@[mnjade_]</a></p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -248,6 +248,7 @@
             "contact_image": {
               "type": "image",
               "settings": {
+                "image": "shopify://shop_images/2nd_panel_3.png",
                 "link": "",
                 "image_ratio": "square",
                 "width": "fit-content",
