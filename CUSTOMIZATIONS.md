@@ -150,6 +150,10 @@ Settings can't reach these, so change them in `assets/mnj-custom.css`:
 - White: the logo in the shop page's custom order circle, made white by a CSS filter, so any
   image picked there shows as a white silhouette
 
+The shop page's custom order card copies the product grid's column maths so it matches a product
+card at every width: 250px minimum columns (the grid's "medium" card size), 32px gaps and the grid
+section's 24px side padding. If you change those grid settings, update the card's widths too.
+
 Two theme settings no longer do anything because the stylesheet overrides them: paragraph
 size, and the menu's font size and weight.
 
