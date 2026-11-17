@@ -95,8 +95,8 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
   Shopify policies instead. The page's own text fills the panel on default pages, the story on about, and
   `how it works` on custom.
 - **Custom requests** arrive in the store's contact email, marked `custom request`.
-- **Collections:** handles `shop`, `necklaces`, `bracelets`, `earrings`. The tab label is the
-  collection's title. The shop tabs show "Collection title" placeholders if these are missing.
+- **Collections:** handles `shop`, `necklaces`, `bracelets`, `earrings`, `charms`. The tab label is the
+  collection's title. Tabs are picked in the `mnj-collection-tabs` block's settings.
 - **Interface wording:** Horizon's locale strings can be changed in Online Store > Themes >
   Edit default theme content. CSS lowercases the labels but can't reword them. For the search
   overlay, set the placeholder to `search for something little ✿` and "View all" to

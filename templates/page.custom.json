@@ -120,7 +120,7 @@
                 "email_label": "email",
                 "email_placeholder": "you@email.com",
                 "piece_label": "what piece?",
-                "piece_options": "necklace\nbracelet\nearrings\nnot sure yet",
+                "piece_options": "necklace\nbracelet\nearrings\nsomething else",
                 "budget_label": "budget",
                 "budget_options": "under $100\n$100 – $250\n$250 – $500\n$500+",
                 "details_label": "details",
