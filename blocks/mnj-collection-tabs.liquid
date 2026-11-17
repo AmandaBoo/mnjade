@@ -1,0 +1,96 @@
+{% doc %}
+  Renders a centered row of collection links as underlined text tabs. The link for the
+  collection being viewed is marked with aria-current and underlined, set in the page's
+  HTML so it stays put when the pointer moves over the row.
+
+  @example
+  {% content_for 'block', type: 'mnj-collection-tabs', id: 'tabs' %}
+{% enddoc %}
+
+{% liquid
+  assign current_collection = closest.collection | default: collection
+%}
+
+{% if block.settings.collections != blank %}
+  <nav
+    class="mnj-collection-tabs"
+    aria-label="{{ block.settings.label | escape }}"
+    {{ block.shopify_attributes }}
+  >
+    <ul class="mnj-collection-tabs__list list-unstyled">
+      {% for tab in block.settings.collections %}
+        <li>
+          <a
+            class="mnj-collection-tabs__link"
+            href="{{ tab.url }}"
+            {% if tab.id == current_collection.id %}
+              aria-current="page"
+            {% endif %}
+          >
+            {{- tab.title | escape -}}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+{% endif %}
+
+{% stylesheet %}
+  .mnj-collection-tabs {
+    width: 100%;
+  }
+
+  .mnj-collection-tabs__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .mnj-collection-tabs__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding-inline: 16px;
+    border-block-end: 2px solid transparent;
+    color: var(--color-foreground);
+    font-family: var(--font-body--family);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .mnj-collection-tabs__link:hover {
+    color: var(--color-foreground-muted);
+  }
+
+  .mnj-collection-tabs__link[aria-current='page'] {
+    border-block-end-color: var(--color-foreground);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "MN JADE collection tabs",
+  "settings": [
+    {
+      "type": "collection_list",
+      "id": "collections",
+      "label": "Collections",
+      "limit": 8
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label for screen readers",
+      "default": "collections"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MN JADE collection tabs"
+    }
+  ]
+}
+{% endschema %}

@@ -201,30 +201,6 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   overflow: hidden;
 }
 
-/* Shop: collection links as underlined text tabs */
-collection-links-component {
-  --gap-2xl: 8px;
-}
-
-.collection-links__link {
-  --min-font-size: 0.9375rem;
-  --max-font-size: 0.9375rem;
-
-  align-items: center;
-  min-height: 40px;
-  padding-inline: 16px;
-  border-block-end: 2px solid transparent;
-}
-
-.collection-links__link[aria-current='true'] {
-  border-block-end-color: var(--color-foreground);
-}
-
-/* Shop: drop the hover image that the text layout adds */
-.collection-links__link .collection-links__image {
-  display: none;
-}
-
 /* Shop: Horizon's empty message is replaced by the mnj-empty-collection block */
 [data-template^='collection'] .main-collection-grid__empty {
   display: none;

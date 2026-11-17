@@ -13,6 +13,7 @@ stylesheet, two small blocks and one line in `layout/theme.liquid`.
 | `assets/mnj-custom.css` | Everything settings can't do, grouped by page and component |
 | `blocks/mnj-sticker.liquid` | Round tilted sticker on the home hero. Text, size, rotation, offset and colors are block settings |
 | `blocks/mnj-empty-collection.liquid` | Message shown when a collection has no products. The text is a block setting |
+| `blocks/mnj-collection-tabs.liquid` | The shop page's underlined tabs. Collections are a block setting; the current one is marked in the HTML |
 
 ## The one edit to a Horizon file
 
@@ -51,7 +52,7 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
   with "Powered by Shopify" off.
 - `templates/index.json`: hero with the sticker, `✿ favorites ✿` product list with a
   `shop all` button, `follow along` panel with four image blocks and an `instagram` button.
-- `templates/collection.json`: `✿ shop ✿` heading, `collection-links` tabs, empty message, product grid with filtering,
+- `templates/collection.json`: `✿ shop ✿` heading, `mnj-collection-tabs` tabs, empty message, product grid with filtering,
   sorting and grid density off.
 - `templates/product.json`: carousel gallery with 72px thumbnails, bordered details card,
   `more little friends` panel using the recommendations block. Quantity and accelerated
@@ -120,8 +121,9 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
   layout and titles, so they read "shipping policy" and "refund policy" and have no "say hi" link.
 - **Search overlay:** no "see everything" link until something is typed, because Horizon only
   shows that button with results. Its label and the search placeholder are locale strings.
-- **Shop tabs:** links to separate collections, chosen because `collection-links` already
-  marks the active tab. Native filtering renders as dropdowns and has no "all" option.
+- **Shop tabs:** links to separate collections in a small `mnj-collection-tabs` block. Horizon's
+  `collection-links` section cleared the underline on hover, so it was replaced. Native filtering
+  renders as dropdowns and has no "all" option.
 - **Favorites row:** cards fill the row at about 443px wide rather than the design's 400px.
 - **Muted text:** `#888888` on white is about 3.5:1, below the 4.5:1 guideline for small text.
 - **Phones:** the design doesn't cover them. The logo drops to 24px, and `shop` and `about`
@@ -153,7 +155,7 @@ size, and the menu's font size and weight.
    - **Phone header:** `.header-drawer`, `.menu-list--mobile`, and the `leftA` grid area
    - **Cards and gallery:** circular images on `.card-gallery` and `media-gallery`
    - **Product page:** `.product-information__grid` columns, recommendations layout
-   - **Shop page:** `.collection-links__link` tabs, `.main-collection-grid__empty`
+   - **Shop page:** `.main-collection-grid__empty` (the tabs are our own block)
    - **Cart:** `.cart-items__*` rows, `.cart-summary__inner`, the text "remove" link
    - **Policy pages:** `.shopify-policy__container`, `__title` and `__body`, which come from
      Shopify rather than Horizon

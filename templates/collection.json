@@ -62,42 +62,29 @@
         "padding-block-end": 24
       }
     },
-    "shop_filters": {
-      "type": "collection-links",
+    "shop_tabs": {
+      "type": "section",
       "blocks": {
-        "link": {
-          "type": "_collection-link",
-          "static": true,
+        "tabs": {
+          "type": "mnj-collection-tabs",
           "settings": {
-            "show_count": false
-          },
-          "blocks": {
-            "title": {
-              "type": "_inline-collection-title",
-              "static": true,
-              "settings": {
-                "font": "var(--font-body--family)",
-                "weight": "600"
-              }
-            },
-            "image": {
-              "type": "_image",
-              "static": true,
-              "settings": {}
-            }
+            "collections": [
+              "shop",
+              "necklaces",
+              "bracelets",
+              "earrings"
+            ],
+            "label": "collections"
           }
         }
       },
+      "block_order": [
+        "tabs"
+      ],
       "settings": {
-        "collection_list": [
-          "shop",
-          "necklaces",
-          "bracelets",
-          "earrings"
-        ],
-        "layout": "text",
         "section_width": "page-width",
-        "alignment": "center",
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
         "padding-block-start": 0,
         "padding-block-end": 24
       }
@@ -291,7 +278,7 @@
   "order": [
     "all_redirect",
     "section",
-    "shop_filters",
+    "shop_tabs",
     "empty_message",
     "main"
   ]
