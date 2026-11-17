@@ -14,7 +14,7 @@ stylesheet, a few small blocks and one line in `layout/theme.liquid`.
 | `blocks/mnj-sticker.liquid` | Round tilted sticker on the home hero. Text, size, rotation, offset and colors are block settings |
 | `blocks/mnj-empty-collection.liquid` | Message shown when a collection has no products. The text is a block setting |
 | `blocks/mnj-collection-tabs.liquid` | The shop page's underlined tabs. Collections are a block setting; the current one is marked in the HTML |
-| `blocks/mnj-custom-request-form.liquid` | Custom order form with labels above the fields and two dropdowns. Sends through Shopify's contact form; every label and option is a block setting |
+| `blocks/mnj-custom-request-form.liquid` | The contact and custom order forms: labels above the fields and up to two dropdowns. Sends through Shopify's contact form; every label and option is a block setting |
 
 ## The one edit to a Horizon file
 
@@ -65,8 +65,8 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
   page's text, three circular photos and a `shop all` button.
 - `templates/page.custom.json` (new): `✿ page title ✿`, the `mnj-custom-request-form` in a gray panel, and a
   `how it works` column with the page's text and a circle photo.
-- `templates/page.contact.json`: `✿ say hi ✿`, Horizon's contact form in a gray panel with the
-  phone field hidden, and an instagram, tiktok and photo column.
+- `templates/page.contact.json`: `✿ say hi ✿`, the `mnj-custom-request-form` in a gray panel with a
+  `what's it about?` dropdown, and an instagram, tiktok and photo column.
 
 ## Redirects to the shop page
 
@@ -94,7 +94,8 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
   `about`; `contact` uses `contact`; `something custom` (handle `custom`) uses `custom`. Shipping and refunds are
   Shopify policies instead. The page's own text fills the panel on default pages, the story on about, and
   `how it works` on custom.
-- **Custom requests** arrive in the store's contact email, marked `custom request`.
+- **Form messages** from the contact and custom pages arrive in the store's contact email, marked
+  `contact` or `custom request`.
 - **Collections:** handles `shop`, `necklaces`, `bracelets`, `earrings`, `charms`. The tab label is the
   collection's title. Tabs are picked in the `mnj-collection-tabs` block's settings.
 - **Interface wording:** Horizon's locale strings can be changed in Online Store > Themes >
@@ -119,8 +120,6 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
 - **Cart remove link:** beside the quantity stepper, not under the product name.
 - **Product name case:** taken from the product title as typed.
 - **Copyright line:** includes the store name, because Horizon always adds it.
-- **Contact form:** no "what's it about?" dropdown, and placeholders instead of labels above
-  each field, because that's how Horizon's form is built.
 - **Shipping and refunds:** the footer links to Shopify's policy pages, so the text lives only in
   Settings > Policies. The stylesheet gives them the info pages' look, but Shopify sets their
   layout and titles, so they read "shipping policy" and "refund policy" and have no "say hi" link.
@@ -175,7 +174,7 @@ size, and the menu's font size and weight.
      Shopify rather than Horizon
    - **Pages:** sections are styled by their template key (`__say_hi`, `__about_banner`,
      `__about_circles`, `__contact_main`, `__custom_main`, and `__custom_card` on the shop page, whose
-     label link is stretched over the card), and the phone field by `#ContactForm-phone`
+     label link is stretched over the card), and the phone field by `#ContactForm-phone` if Horizon's contact form is added back
    - **Search overlay:** `.search-modal__content`, `.predictive-search-*`, `.resource-card__*`.
      Check it open, with results, with no results, and at phone width
 5. The "0" cart badge and the "remove" link override `.hidden` and `.visually-hidden` from

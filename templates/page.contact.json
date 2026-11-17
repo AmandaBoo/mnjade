@@ -112,48 +112,26 @@
             "padding-inline-end": 40
           },
           "blocks": {
-            "form": {
-              "type": "contact-form",
+            "contact_form": {
+              "type": "mnj-custom-request-form",
               "settings": {
-                "width": "custom",
-                "custom_width": 100,
-                "width_mobile": "custom",
-                "custom_width_mobile": 100,
-                "background_color": "",
-                "input_style": "default",
-                "input_background_color": "{{ settings.color_palette.background }}",
-                "input_text_color": "{{ settings.color_palette.foreground }}",
-                "input_border_color": "{{ settings.color_palette.foreground }}",
-                "border_width": 1,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "submit-button": {
-                  "type": "contact-form-submit-button",
-                  "static": true,
-                  "settings": {
-                    "label": "send ✿",
-                    "style_class": "button",
-                    "custom_button_background": "{{ settings.color_palette.foreground }}",
-                    "custom_button_text": "{{ settings.color_palette.background }}",
-                    "custom_button_border": "{{ settings.color_palette.background }}",
-                    "width": "fit-content",
-                    "custom_width": 100,
-                    "width_mobile": "fit-content",
-                    "custom_width_mobile": 100
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": []
+                "name_label": "name",
+                "name_placeholder": "your name",
+                "email_label": "email",
+                "email_placeholder": "you@email.com",
+                "piece_label": "what's it about?",
+                "piece_options": "an order\na custom piece\nshipping or returns\nsomething else",
+                "budget_label": "",
+                "budget_options": "",
+                "details_label": "message",
+                "details_placeholder": "tell us a little…",
+                "button_label": "send ✿",
+                "form_name": "contact"
+              }
             }
           },
           "block_order": [
-            "form"
+            "contact_form"
           ]
         },
         "aside": {

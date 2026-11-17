@@ -124,7 +124,7 @@
                 "budget_label": "budget",
                 "budget_options": "under $100\n$100 – $250\n$250 – $500\n$500+",
                 "details_label": "details",
-                "details_placeholder": "",
+                "details_placeholder": "tell me more about what you're looking for. details like your preferred size, colors, and metals help a lot!",
                 "button_label": "send ✿",
                 "form_name": "custom request"
               },

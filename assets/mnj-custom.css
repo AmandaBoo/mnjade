@@ -499,7 +499,8 @@ media-gallery slideshow-arrows {
   max-width: 300px;
 }
 
-/* Contact: no phone field, a 160px circle photo, lowercase placeholders */
+/* Contact: a 160px circle photo. The phone and placeholder rules only apply if Horizon's own
+   contact form is added back; the contact page uses mnj-custom-request-form */
 #ContactForm-phone {
   display: none;
 }
