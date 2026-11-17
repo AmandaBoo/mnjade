@@ -76,6 +76,7 @@
         "about_image": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/IMG_5650.jpg",
             "link": "",
             "image_ratio": "landscape",
             "width": "fill",
