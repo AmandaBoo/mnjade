@@ -206,6 +206,29 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   display: none;
 }
 
+/* Shop: "something custom?" card under the grid, sized like a product card */
+[id$='__custom_card'] .group-block:has(> .group-block__link) {
+  width: min(100%, var(--mnj-card-width, 340px));
+}
+
+[id$='__custom_card'] .group-block .group-block {
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+[id$='__custom_card'] .group-block .group-block p {
+  font-size: 2.75rem;
+  line-height: 1;
+}
+
+[id$='__custom_card'] .group-block .group-block h3 {
+  font-size: 1.375rem;
+}
+
+[id$='__custom_card'] .group-block__link:hover ~ * {
+  color: var(--color-foreground-muted);
+}
+
 /* Product: 640px gallery and 420px details card, centered, 56px apart */
 @media screen and (min-width: 750px) {
   .product-information__grid {
@@ -350,7 +373,7 @@ media-gallery slideshow-arrows {
   display: none;
 }
 
-/* Pages: "say hi" link under shipping, refunds and faqs (templates/page.info.json) */
+/* Pages: "say hi" link under each page's text (templates/page.json) */
 [id$='__say_hi'] a {
   border-block-end: 2px solid var(--color-foreground);
   color: var(--color-foreground);
@@ -406,7 +429,9 @@ media-gallery slideshow-arrows {
 [id$='__about_circles'] .image-block img,
 [id$='__about_circles'] .placeholder-image,
 [id$='__contact_main'] .image-block img,
-[id$='__contact_main'] .placeholder-image {
+[id$='__contact_main'] .placeholder-image,
+[id$='__custom_main'] .image-block img,
+[id$='__custom_main'] .placeholder-image {
   border-radius: 50%;
 }
 
@@ -419,7 +444,8 @@ media-gallery slideshow-arrows {
   display: none;
 }
 
-[id$='__contact_main'] .image-block {
+[id$='__contact_main'] .image-block,
+[id$='__custom_main'] .image-block {
   width: 160px;
 }
 

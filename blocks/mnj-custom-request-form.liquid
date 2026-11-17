@@ -1,0 +1,375 @@
+{% doc %}
+  Renders a custom order request form with labels above each field: name, email, two
+  dropdowns, a details box and a send button. It sends through Shopify's contact form, so
+  requests arrive in the store's contact email. Every label, placeholder and dropdown option
+  is a block setting; a dropdown with no label or no options is left out.
+
+  @example
+  {% content_for 'block', type: 'mnj-custom-request-form', id: 'request_form' %}
+{% enddoc %}
+
+{% liquid
+  assign form_id = block.id | prepend: 'MnjRequestForm-'
+  assign field_id = block.id | prepend: 'MnjRequest-'
+
+  assign piece_options = block.settings.piece_options | newline_to_br | split: '<br />'
+  assign budget_options = block.settings.budget_options | newline_to_br | split: '<br />'
+%}
+
+<div
+  class="mnj-request-form"
+  {{ block.shopify_attributes }}
+>
+  {%- form 'contact', id: form_id, class: 'mnj-request-form__form' -%}
+    <input
+      type="hidden"
+      name="contact[id]"
+      value="{{ form_id }}"
+    >
+
+    {% liquid
+      assign form_matches = false
+      if form.id == form_id or form.id == blank
+        assign form_matches = true
+      endif
+    %}
+    {% if block.settings.form_name != blank %}
+      <input
+        type="hidden"
+        name="contact[form]"
+        value="{{ block.settings.form_name | escape }}"
+      >
+    {% endif %}
+
+    {%- if form.errors and form_matches -%}
+      <p
+        class="mnj-request-form__status"
+        id="{{ field_id }}-error"
+        tabindex="-1"
+        autofocus
+      >
+        {{- form.errors.translated_fields.email | capitalize }}
+        {{ form.errors.messages.email -}}
+      </p>
+    {%- endif -%}
+
+    {%- if form.posted_successfully? and form_matches -%}
+      <p
+        class="mnj-request-form__status"
+        tabindex="-1"
+        autofocus
+      >
+        {{- 'blocks.contact_form.post_success' | t -}}
+      </p>
+    {%- endif -%}
+
+    <div class="mnj-request-form__row">
+      <div class="mnj-request-form__field">
+        <label
+          class="mnj-request-form__label"
+          for="{{ field_id }}-name"
+        >
+          {{- block.settings.name_label | escape -}}
+        </label>
+        <input
+          type="text"
+          id="{{ field_id }}-name"
+          class="mnj-request-form__input"
+          name="contact[name]"
+          autocomplete="name"
+          value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+          placeholder="{{ block.settings.name_placeholder | escape }}"
+        >
+      </div>
+
+      <div class="mnj-request-form__field">
+        <label
+          class="mnj-request-form__label"
+          for="{{ field_id }}-email"
+        >
+          {{- block.settings.email_label | escape -}}
+        </label>
+        <input
+          type="email"
+          id="{{ field_id }}-email"
+          class="mnj-request-form__input"
+          name="contact[email]"
+          autocomplete="email"
+          spellcheck="false"
+          autocapitalize="off"
+          required
+          value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+          placeholder="{{ block.settings.email_placeholder | escape }}"
+          {% if form.errors contains 'email' and form_matches %}
+            aria-invalid="true"
+            aria-describedby="{{ field_id }}-error"
+          {% endif %}
+        >
+      </div>
+    </div>
+
+    {% capture dropdowns %}
+      {% if block.settings.piece_label != blank and block.settings.piece_options != blank %}
+        <div class="mnj-request-form__field">
+          <label
+            class="mnj-request-form__label"
+            for="{{ field_id }}-piece"
+          >
+            {{- block.settings.piece_label | escape -}}
+          </label>
+          <div class="mnj-request-form__select">
+            <select
+              id="{{ field_id }}-piece"
+              class="mnj-request-form__input"
+              name="contact[{{ block.settings.piece_label | escape }}]"
+            >
+              {% for option in piece_options %}
+                {% assign option_text = option | strip %}
+                {% if option_text != blank %}
+                  <option>{{ option_text | escape }}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+            <span class="mnj-request-form__caret">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if block.settings.budget_label != blank and block.settings.budget_options != blank %}
+        <div class="mnj-request-form__field">
+          <label
+            class="mnj-request-form__label"
+            for="{{ field_id }}-budget"
+          >
+            {{- block.settings.budget_label | escape -}}
+          </label>
+          <div class="mnj-request-form__select">
+            <select
+              id="{{ field_id }}-budget"
+              class="mnj-request-form__input"
+              name="contact[{{ block.settings.budget_label | escape }}]"
+            >
+              {% for option in budget_options %}
+                {% assign option_text = option | strip %}
+                {% if option_text != blank %}
+                  <option>{{ option_text | escape }}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+            <span class="mnj-request-form__caret">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+          </div>
+        </div>
+      {% endif %}
+    {% endcapture %}
+
+    {% if dropdowns != blank %}
+      <div class="mnj-request-form__row">{{ dropdowns }}</div>
+    {% endif %}
+
+    <div class="mnj-request-form__field">
+      <label
+        class="mnj-request-form__label"
+        for="{{ field_id }}-details"
+      >
+        {{- block.settings.details_label | escape -}}
+      </label>
+      <textarea
+        id="{{ field_id }}-details"
+        class="mnj-request-form__input mnj-request-form__input--textarea"
+        name="contact[body]"
+        rows="6"
+        placeholder="{{ block.settings.details_placeholder | escape }}"
+      >
+        {{- form.body -}}
+      </textarea>
+    </div>
+
+    <button
+      type="submit"
+      class="button mnj-request-form__submit"
+    >
+      {{- block.settings.button_label | escape -}}
+    </button>
+  {%- endform -%}
+</div>
+
+{% stylesheet %}
+  .mnj-request-form {
+    width: 100%;
+  }
+
+  .mnj-request-form__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .mnj-request-form__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 16px;
+  }
+
+  .mnj-request-form__field {
+    display: flex;
+    flex: 1 1 200px;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .mnj-request-form__label {
+    color: var(--color-foreground);
+    font-family: var(--font-heading--family);
+    font-size: var(--font-size--sm);
+    font-weight: 600;
+  }
+
+  .mnj-request-form__input {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 52px;
+    padding-inline: 20px;
+    border: var(--style-border-width-inputs) solid var(--color-input-border);
+    border-radius: var(--style-border-radius-inputs);
+    background-color: var(--color-input-background);
+    color: var(--color-input-text);
+    font-family: var(--font-body--family);
+    font-size: 0.9375rem;
+  }
+
+  .mnj-request-form__input--textarea {
+    min-height: 160px;
+    padding-block: 16px;
+    resize: vertical;
+  }
+
+  .mnj-request-form__select {
+    position: relative;
+  }
+
+  .mnj-request-form__select .mnj-request-form__input {
+    padding-inline-end: 44px;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .mnj-request-form__caret {
+    display: flex;
+    position: absolute;
+    inset-block: 0;
+    inset-inline-end: 20px;
+    align-items: center;
+    color: var(--color-input-text);
+    pointer-events: none;
+  }
+
+  .mnj-request-form__submit {
+    align-self: flex-start;
+  }
+
+  .mnj-request-form__status {
+    margin: 0;
+    color: var(--color-foreground);
+    font-weight: 600;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "MN JADE request form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "name_label",
+      "label": "Name label",
+      "default": "name"
+    },
+    {
+      "type": "text",
+      "id": "name_placeholder",
+      "label": "Name placeholder",
+      "default": "your name"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "email"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "you@email.com"
+    },
+    {
+      "type": "header",
+      "content": "First dropdown"
+    },
+    {
+      "type": "text",
+      "id": "piece_label",
+      "label": "Label",
+      "default": "what piece?"
+    },
+    {
+      "type": "textarea",
+      "id": "piece_options",
+      "label": "Options",
+      "info": "One per line. Leave empty to hide this dropdown.",
+      "default": "necklace\nbracelet\nearrings\nnot sure yet"
+    },
+    {
+      "type": "header",
+      "content": "Second dropdown"
+    },
+    {
+      "type": "text",
+      "id": "budget_label",
+      "label": "Label",
+      "default": "budget"
+    },
+    {
+      "type": "textarea",
+      "id": "budget_options",
+      "label": "Options",
+      "info": "One per line. Leave empty to hide this dropdown.",
+      "default": "under $100\n$100 – $250\n$250 – $500\n$500+"
+    },
+    {
+      "type": "header",
+      "content": "Details and button"
+    },
+    {
+      "type": "text",
+      "id": "details_label",
+      "label": "Details label",
+      "default": "details"
+    },
+    {
+      "type": "text",
+      "id": "details_placeholder",
+      "label": "Details placeholder"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "send ✿"
+    },
+    {
+      "type": "text",
+      "id": "form_name",
+      "label": "Name in your contact emails",
+      "info": "Added to each request so you can tell it apart from contact page messages.",
+      "default": "custom request"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MN JADE request form"
+    }
+  ]
+}
+{% endschema %}

@@ -273,6 +273,101 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "custom_card": {
+      "type": "section",
+      "blocks": {
+        "custom_link_card": {
+          "type": "group",
+          "blocks": {
+            "custom_circle": {
+              "type": "group",
+              "blocks": {
+                "circle_flower": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>✿</p>",
+                    "width": "100%",
+                    "alignment": "center",
+                    "type_preset": "paragraph"
+                  }
+                },
+                "circle_title": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h3>something custom?</h3>",
+                    "width": "100%",
+                    "alignment": "center",
+                    "type_preset": "h3"
+                  }
+                }
+              },
+              "block_order": [
+                "circle_flower",
+                "circle_title"
+              ],
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "center",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 8,
+                "width": "fill",
+                "width_mobile": "fill",
+                "height": "fit",
+                "background_color": "{{ settings.color_palette.color3 }}",
+                "padding-block-start": 24,
+                "padding-block-end": 24,
+                "padding-inline-start": 24,
+                "padding-inline-end": 24
+              }
+            },
+            "card_title": {
+              "type": "text",
+              "settings": {
+                "text": "<p>make it yours</p>",
+                "width": "100%",
+                "alignment": "center",
+                "type_preset": "paragraph"
+              }
+            },
+            "card_link_text": {
+              "type": "text",
+              "settings": {
+                "text": "<p>start a request</p>",
+                "width": "100%",
+                "alignment": "center",
+                "type_preset": "paragraph",
+                "text_color": "{{ settings.color_palette.color1 }}"
+              }
+            }
+          },
+          "block_order": [
+            "custom_circle",
+            "card_title",
+            "card_link_text"
+          ],
+          "settings": {
+            "content_direction": "column",
+            "horizontal_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "width_mobile": "fill",
+            "height": "fit",
+            "link": "/pages/custom"
+          }
+        }
+      },
+      "block_order": [
+        "custom_link_card"
+      ],
+      "settings": {
+        "section_width": "page-width",
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "padding-block-start": 0,
+        "padding-block-end": 96
+      }
     }
   },
   "order": [
@@ -280,6 +375,7 @@
     "section",
     "shop_tabs",
     "empty_message",
-    "main"
+    "main",
+    "custom_card"
   ]
 }

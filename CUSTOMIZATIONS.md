@@ -4,7 +4,7 @@ This theme is Horizon 4.4.0 with the Tinker preset, styled to match the MN JADE
 design canvas. Shopify ignores this file.
 
 Most of the look comes from settings and templates. Custom code is limited to one
-stylesheet, two small blocks and one line in `layout/theme.liquid`.
+stylesheet, a few small blocks and one line in `layout/theme.liquid`.
 
 ## Added files
 
@@ -14,6 +14,7 @@ stylesheet, two small blocks and one line in `layout/theme.liquid`.
 | `blocks/mnj-sticker.liquid` | Round tilted sticker on the home hero. Text, size, rotation, offset and colors are block settings |
 | `blocks/mnj-empty-collection.liquid` | Message shown when a collection has no products. The text is a block setting |
 | `blocks/mnj-collection-tabs.liquid` | The shop page's underlined tabs. Collections are a block setting; the current one is marked in the HTML |
+| `blocks/mnj-custom-request-form.liquid` | Custom order form with labels above the fields and two dropdowns. Sends through Shopify's contact form; every label and option is a block setting |
 
 ## The one edit to a Horizon file
 
@@ -53,15 +54,17 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
 - `templates/index.json`: hero with the sticker, `✿ favorites ✿` product list with a
   `shop all` button, `follow along` panel with four image blocks and an `instagram` button.
 - `templates/collection.json`: `✿ shop ✿` heading, `mnj-collection-tabs` tabs, empty message, product grid with filtering,
-  sorting and grid density off.
+  sorting and grid density off, and a `something custom?` circle card linking to `/pages/custom`.
 - `templates/product.json`: carousel gallery with 72px thumbnails, bordered details card,
   `more little friends` panel using the recommendations block. Quantity and accelerated
   checkout are disabled static blocks. Sticky add to cart is off.
 - `templates/cart.json`: `your cart` title, gray summary panel, `keep shopping` link.
-- `templates/page.info.json` (new): shipping, refunds and faqs. `✿ page title ✿`, the page's
-  text in a gray panel, and a `say hi` link to the contact page.
+- `templates/page.json` (the default page template, used by faqs and any new page): `✿ page title ✿`,
+  the page's text in a gray panel, and a `say hi` link to the contact page. This replaced an `info` template.
 - `templates/page.about.json` (new): about. Title, a 520px banner image, a heading over the
   page's text, three circular photos and a `see the pieces ✿` button.
+- `templates/page.custom.json` (new): `✿ page title ✿`, the `mnj-custom-request-form` in a gray panel, and a
+  `how it works` column with the page's text and a circle photo.
 - `templates/page.contact.json`: `✿ say hi ✿`, Horizon's contact form in a gray panel with the
   phone field hidden, and an instagram and photo column.
 
@@ -85,11 +88,13 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
   design canvas; the wordmark font, Fredoka, is drawn into the logo image, so the site's text
   fonts don't change.
 - **`main-menu`:** shop, about.
-- **`footer` menu:** `shipping ✿`, `refunds ✿`, `faqs ✿`, `contact`. Each ✿ is part of the link
+- **`footer` menu:** `shipping ✿`, `refunds ✿`, `faqs ✿`, `contact ✿`, `custom`. Each ✿ is part of the link
   title before it.
-- **Pages** (Online Store > Pages), each with its template: `faqs` uses `info`; `about` uses
-  `about`; `contact` uses `contact`. Shipping and refunds are Shopify policies instead. The page's own text fills the
-  panel on info pages and the story on about.
+- **Pages** (Online Store > Pages), each with its template: `faqs` uses the default; `about` uses
+  `about`; `contact` uses `contact`; `something custom` (handle `custom`) uses `custom`. Shipping and refunds are
+  Shopify policies instead. The page's own text fills the panel on default pages, the story on about, and
+  `how it works` on custom.
+- **Custom requests** arrive in the store's contact email, marked `custom request`.
 - **Collections:** handles `shop`, `necklaces`, `bracelets`, `earrings`. The tab label is the
   collection's title. The shop tabs show "Collection title" placeholders if these are missing.
 - **Interface wording:** Horizon's locale strings can be changed in Online Store > Themes >
@@ -99,7 +104,7 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
 
 ## Empty settings to fill in the theme editor
 
-- About page banner and its three circle photos, and the contact page photo
+- About page banner and its three circle photos, and the contact and custom page photos
 - Contact page instagram text, which starts as `@[handle]`
 
 - Home hero image
@@ -124,6 +129,9 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
 - **Shop tabs:** links to separate collections in a small `mnj-collection-tabs` block. Horizon's
   `collection-links` section cleared the underline on hover, so it was replaced. Native filtering
   renders as dropdowns and has no "all" option.
+- **Custom request form:** no inspiration photo upload, because Shopify's forms can't accept files.
+- **Shop custom card:** sits centered on its own row under the products, because Horizon's product grid
+  only holds products.
 - **Favorites row:** cards fill the row at about 443px wide rather than the design's 400px.
 - **Muted text:** `#888888` on white is about 3.5:1, below the 4.5:1 guideline for small text.
 - **Phones:** the design doesn't cover them. The logo drops to 24px, and `shop` and `about`
@@ -160,7 +168,8 @@ size, and the menu's font size and weight.
    - **Policy pages:** `.shopify-policy__container`, `__title` and `__body`, which come from
      Shopify rather than Horizon
    - **Pages:** sections are styled by their template key (`__say_hi`, `__about_banner`,
-     `__about_circles`, `__contact_main`), and the phone field by `#ContactForm-phone`
+     `__about_circles`, `__contact_main`, `__custom_main`, and `__custom_card` on the shop page, which also
+     relies on `.group-block__link`), and the phone field by `#ContactForm-phone`
    - **Search overlay:** `.search-modal__content`, `.predictive-search-*`, `.resource-card__*`.
      Check it open, with results, with no results, and at phone width
 5. The "0" cart badge and the "remove" link override `.hidden` and `.visually-hidden` from
