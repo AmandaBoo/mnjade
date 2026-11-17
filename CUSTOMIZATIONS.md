@@ -53,8 +53,8 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
   with "Powered by Shopify" off.
 - `templates/index.json`: hero with the sticker, `✿ favorites ✿` product list with a
   `shop all` button, `follow along` panel with four image blocks and `instagram` and `tiktok` buttons side by side.
-- `templates/collection.json`: `✿ shop ✿` heading, `mnj-collection-tabs` tabs, empty message, product grid with filtering,
-  sorting and grid density off, and a green circle with the logo and a `custom order form` label, linking to `/pages/custom`.
+- `templates/collection.json`: `✿ shop ✿` heading, `mnj-collection-tabs` tabs, empty message, product grid with filtering
+  on (sorting and grid density off), and a green circle with the logo and a `custom order form` label, linking to `/pages/custom`.
 - `templates/product.json`: carousel gallery with 72px thumbnails, bordered details card,
   `more little friends` panel using the recommendations block. Quantity and accelerated
   checkout are disabled static blocks. Sticky add to cart is off.
@@ -98,6 +98,8 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
   `contact` or `custom request`.
 - **Collections:** handles `shop`, `necklaces`, `bracelets`, `earrings`, `charms`. The tab label is the
   collection's title. Tabs are picked in the `mnj-collection-tabs` block's settings.
+- **Filters** come from the Search & Discovery app (Apps > Search & Discovery > Filters). The length
+  filter reads the products' `Length` variant option.
 - **Interface wording:** Horizon's locale strings can be changed in Online Store > Themes >
   Edit default theme content. CSS lowercases the labels but can't reword them. For the search
   overlay, set the placeholder to `search for something little ✿` and "View all" to
@@ -131,6 +133,10 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
 - **Custom request form:** no inspiration photo upload, because Shopify's forms can't accept files.
 - **Shop custom card:** sits centered on its own row under the products, because Horizon's product grid
   only holds products.
+- **Shop filters:** not in the design. They sit centred under the tabs, without Horizon's product
+  count; on phones they open from a `filter` button.
+- **Sold out:** Horizon's badge, lowercased and moved onto the photo's circle, and the card's price is
+  struck through.
 - **Favorites row:** cards fill the row at about 443px wide rather than the design's 400px.
 - **Muted text:** `#888888` on white is about 3.5:1, below the 4.5:1 guideline for small text.
 - **Phones:** the design doesn't cover them. The logo drops to 24px, and `shop` and `about`
@@ -168,7 +174,9 @@ size, and the menu's font size and weight.
    - **Phone header:** `.header-drawer`, `.menu-list--mobile`, and the `leftA` grid area
    - **Cards and gallery:** circular images on `.card-gallery` and `media-gallery`
    - **Product page:** `.product-information__grid` columns, recommendations layout
-   - **Shop page:** `.main-collection-grid__empty` (the tabs are our own block)
+   - **Shop page:** `.main-collection-grid__empty` (the tabs are our own block); filters by
+     `.facets__form`, `.facets__filters-wrapper`, `.products-count-wrapper`, `.facets-horizontal-remove`
+     and `.facets-toggle`; sold-out cards by `.color-custom-badge-sold-out`, `.product-badges` and `.price`
    - **Cart:** `.cart-items__*` rows, `.cart-summary__inner`, the text "remove" link
    - **Policy pages:** `.shopify-policy__container`, `__title` and `__body`, which come from
      Shopify rather than Horizon

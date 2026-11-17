@@ -24,7 +24,9 @@
 .cart-totals__tax-note,
 .cart-items__remove,
 .predictive-search__reset-button,
-input.search-input::placeholder {
+input.search-input::placeholder,
+.product-badges__badge,
+.facets__clear-all-link {
   text-transform: lowercase;
 }
 
@@ -32,6 +34,16 @@ input.search-input::placeholder {
 .card-gallery img,
 media-gallery img:not(.dialog-zoomed-gallery *) {
   border-radius: 50%;
+}
+
+/* Cards: the badge sits on the circle's edge, like a sticker, instead of in the empty corner */
+.card-gallery .product-badges {
+  --badge-inset: 10%;
+}
+
+/* Cards: sold-out products (the ones with Horizon's sold-out badge) show their price struck through */
+.product-card:has(.color-custom-badge-sold-out) .price {
+  text-decoration: line-through;
 }
 
 /* Header: fallback text logo, only shown if the logo image is removed */
@@ -203,6 +215,31 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
 
 /* Shop: Horizon's empty message is replaced by the mnj-empty-collection block */
 [data-template^='collection'] .main-collection-grid__empty {
+  display: none;
+}
+
+/* Shop: filters centred under the tabs, without Horizon's product count */
+[data-template^='collection'] .facets--horizontal .facets__form {
+  justify-content: center;
+}
+
+[data-template^='collection'] .facets--horizontal .facets__filters-wrapper {
+  flex-grow: 0;
+  margin-inline-end: 0;
+}
+
+[data-template^='collection'] .facets--horizontal .products-count-wrapper {
+  display: none;
+}
+
+/* Phones: the "filter" button that opens Horizon's drawer, centred under the tabs */
+[data-template^='collection'] .facets-toggle {
+  justify-content: center;
+}
+
+/* The empty "clear all" slot still takes a gap and pushes the row off centre; drop it until a
+   filter is active */
+[data-template^='collection'] .facets-horizontal-remove:not(:has(.facets__clear-all-link--active)) {
   display: none;
 }
 

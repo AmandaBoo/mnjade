@@ -49,7 +49,7 @@
     "show_add_discount_code": false,
     "show_installments": false,
     "show_accelerated_checkout_buttons": false,
-    "empty_cart_button_link": "shopify://collections/shop-old",
+    "empty_cart_button_link": "shopify://collections/shop",
     "cart_thumbnail_border_radius": 100,
     "drawer_background_color": "{{ settings.color_palette.background }}",
     "drawer_text_color": "{{ settings.color_palette.foreground }}",

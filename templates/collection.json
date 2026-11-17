@@ -69,7 +69,7 @@
           "type": "mnj-collection-tabs",
           "settings": {
             "collections": [
-              "shop-old",
+              "shop",
               "necklaces",
               "bracelets",
               "earrings",
@@ -97,7 +97,7 @@
           "type": "filters",
           "static": true,
           "settings": {
-            "enable_filtering": false,
+            "enable_filtering": true,
             "filter_style": "horizontal",
             "filter_width": "centered",
             "text_label_case": "default",
@@ -251,7 +251,7 @@
         "padding-inline-start": 24,
         "padding-inline-end": 24,
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 40,
+        "padding-block-start": 0,
         "padding-block-end": 48
       }
     },
