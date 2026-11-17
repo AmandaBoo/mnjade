@@ -13,7 +13,8 @@ stylesheet, a few small blocks and one line in `layout/theme.liquid`.
 | `assets/mnj-custom.css` | Everything settings can't do, grouped by page and component |
 | `blocks/mnj-sticker.liquid` | Round tilted sticker on the home hero. Text, size, rotation, offset and colors are block settings |
 | `blocks/mnj-empty-collection.liquid` | Message shown when a collection has no products. The text is a block setting |
-| `blocks/mnj-collection-tabs.liquid` | The shop page's underlined tabs. Collections are a block setting; the current one is marked in the HTML |
+| `blocks/mnj-collection-tabs.liquid` | The shop page's underlined tabs. Collections are a block setting; the current one is marked in the HTML. The first tab can have its own label (`all`) |
+| `blocks/mnj-social-profiles.liquid` | Not visible. Adds the shop's Instagram, TikTok and other profile links to the structured data search engines read. In the footer's group; links are block settings |
 | `blocks/mnj-custom-request-form.liquid` | The contact and custom order forms: labels above the fields and up to two dropdowns. Sends through Shopify's contact form; every label and option is a block setting |
 
 ## The one edit to a Horizon file
@@ -53,7 +54,7 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
   with "Powered by Shopify" off.
 - `templates/index.json`: hero with the sticker, `✿ favorites ✿` product list with a
   `shop all` button, `follow along` panel with four image blocks and `instagram` and `tiktok` buttons side by side.
-- `templates/collection.json`: `✿ shop ✿` heading, `mnj-collection-tabs` tabs, empty message, product grid with filtering
+- `templates/collection.json`: `✿ collection title ✿` heading (`✿ shop ✿` on the all tab), `mnj-collection-tabs` tabs, empty message, product grid with filtering
   on (sorting and grid density off), and a green circle with the logo and a `custom order form` label, linking to `/pages/custom`.
 - `templates/product.json`: carousel gallery with 72px thumbnails, bordered details card,
   `more little friends` panel using the recommendations block. Quantity and accelerated
@@ -96,7 +97,9 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
   `how it works` on custom.
 - **Form messages** from the contact and custom pages arrive in the store's contact email, marked
   `contact` or `custom request`.
-- **Collections:** handles `shop`, `necklaces`, `bracelets`, `earrings`, `charms`. The tab label is the
+- **Collections:** handles `shop`, `necklaces`, `bracelets`, `earrings`, `charms`. The `shop` collection is
+  automated (every product not tagged `hidden`) and titled `shop`, which is its page heading; its tab says
+  `all` from the tabs block's "First tab label". The tab label is the
   collection's title. Tabs are picked in the `mnj-collection-tabs` block's settings.
 - **Filters** come from the Search & Discovery app (Apps > Search & Discovery > Filters). The length
   filter reads the products' `Length` variant option.
@@ -133,6 +136,8 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
 - **Custom request form:** no inspiration photo upload, because Shopify's forms can't accept files.
 - **Shop custom card:** sits centered on its own row under the products, because Horizon's product grid
   only holds products.
+- **Shop heading:** shows the collection's name (`✿ necklaces ✿`) instead of always `✿ shop ✿`, so each
+  collection page has its own main heading for search engines.
 - **Shop filters:** not in the design. They sit centred under the tabs, without Horizon's product
   count; on phones they open from a `filter` button.
 - **Sold out:** Horizon's badge, lowercased and moved onto the photo's circle, and the card's price is

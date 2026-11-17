@@ -52,12 +52,20 @@
                 "width_mobile": "fit-content",
                 "image": "shopify://shop_images/mn-jade-mark.png"
               }
+            },
+            "social_profiles": {
+              "type": "mnj-social-profiles",
+              "settings": {
+                "instagram": "https://www.instagram.com/mnjade_",
+                "tiktok": "https://www.tiktok.com/@mnjade_"
+              }
             }
           },
           "block_order": [
             "footer_divider",
             "footer_mark",
-            "footer_links"
+            "footer_links",
+            "social_profiles"
           ]
         }
       },

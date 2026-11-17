@@ -1,0 +1,79 @@
+{% doc %}
+  Renders nothing visible. Outputs the store's social profiles as Organization structured
+  data (schema.org sameAs), so search engines and AI shopping tools can connect the shop to
+  its Instagram, TikTok and other accounts. Horizon's own Organization data in the header has
+  no social links. Only profiles with a link set are included.
+
+  @example
+  {% content_for 'block', type: 'mnj-social-profiles', id: 'social_profiles' %}
+{% enddoc %}
+
+{% liquid
+  assign profiles = ''
+  assign profile_keys = 'instagram,tiktok,facebook,pinterest,youtube' | split: ','
+  for key in profile_keys
+    assign profile_url = block.settings[key]
+    if profile_url != blank
+      assign profiles = profiles | append: profile_url | append: '||'
+    endif
+  endfor
+  assign profile_list = profiles | split: '||'
+%}
+
+{% if profile_list.size > 0 %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": {{ shop.name | json }},
+      "url": {{ shop.url | json }},
+      {% if settings.logo %}
+        "logo": {{ settings.logo | image_url: width: 500 | prepend: 'https:' | json }},
+      {% endif %}
+      "sameAs": {{ profile_list | json }}
+    }
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "MN JADE social profiles",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Not shown on the page. Tells search engines and AI shopping tools which social accounts belong to the shop."
+    },
+    {
+      "type": "url",
+      "id": "instagram",
+      "label": "Instagram"
+    },
+    {
+      "type": "url",
+      "id": "tiktok",
+      "label": "TikTok"
+    },
+    {
+      "type": "url",
+      "id": "facebook",
+      "label": "Facebook"
+    },
+    {
+      "type": "url",
+      "id": "pinterest",
+      "label": "Pinterest"
+    },
+    {
+      "type": "url",
+      "id": "youtube",
+      "label": "YouTube"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MN JADE social profiles"
+    }
+  ]
+}
+{% endschema %}

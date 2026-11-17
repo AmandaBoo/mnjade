@@ -1,7 +1,9 @@
 {% doc %}
   Renders a centered row of collection links as underlined text tabs. The link for the
   collection being viewed is marked with aria-current and underlined, set in the page's
-  HTML so it stays put when the pointer moves over the row.
+  HTML so it stays put when the pointer moves over the row. Tabs show each collection's
+  title; the first tab can have its own label (the shop collection is titled "shop" for
+  its heading, but its tab reads "all").
 
   @example
   {% content_for 'block', type: 'mnj-collection-tabs', id: 'tabs' %}
@@ -19,6 +21,12 @@
   >
     <ul class="mnj-collection-tabs__list list-unstyled">
       {% for tab in block.settings.collections %}
+        {% liquid
+          assign tab_label = tab.title
+          if forloop.first and block.settings.first_label != blank
+            assign tab_label = block.settings.first_label
+          endif
+        %}
         <li>
           <a
             class="mnj-collection-tabs__link"
@@ -27,7 +35,7 @@
               aria-current="page"
             {% endif %}
           >
-            {{- tab.title | escape -}}
+            {{- tab_label | escape -}}
           </a>
         </li>
       {% endfor %}
@@ -79,6 +87,12 @@
       "id": "collections",
       "label": "Collections",
       "limit": 8
+    },
+    {
+      "type": "text",
+      "id": "first_label",
+      "label": "First tab label",
+      "info": "Shown instead of the first collection's title. Leave empty to use the title."
     },
     {
       "type": "text",

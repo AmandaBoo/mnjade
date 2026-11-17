@@ -24,7 +24,7 @@
         "text_tqQTNE": {
           "type": "text",
           "settings": {
-            "text": "<h1>✿ shop ✿</h1>",
+            "text": "<h1>✿ {{ closest.collection.title }} ✿</h1>",
             "width": "100%",
             "alignment": "center",
             "type_preset": "h1"
@@ -75,7 +75,8 @@
               "earrings",
               "charms"
             ],
-            "label": "collections"
+            "label": "collections",
+            "first_label": "all"
           }
         }
       },
