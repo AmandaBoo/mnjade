@@ -69,7 +69,7 @@
           "type": "mnj-collection-tabs",
           "settings": {
             "collections": [
-              "shop",
+              "shop-old",
               "necklaces",
               "bracelets",
               "earrings",
@@ -83,9 +83,9 @@
         "tabs"
       ],
       "settings": {
-        "section_width": "page-width",
         "content_direction": "column",
         "horizontal_alignment_flex_direction_column": "center",
+        "section_width": "page-width",
         "padding-block-start": 0,
         "padding-block-end": 24
       }
@@ -280,23 +280,17 @@
       "blocks": {
         "custom_link_card": {
           "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "horizontal_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "width_mobile": "fill",
+            "height": "fit"
+          },
           "blocks": {
             "custom_circle": {
               "type": "group",
-              "blocks": {
-                "circle_logo": {
-                  "type": "image",
-                  "settings": {
-                    "image": "shopify://shop_images/mn-jade-mark.png",
-                    "image_ratio": "adapt",
-                    "width": "fit-content",
-                    "width_mobile": "fit-content"
-                  }
-                }
-              },
-              "block_order": [
-                "circle_logo"
-              ],
               "settings": {
                 "content_direction": "column",
                 "horizontal_alignment_flex_direction_column": "center",
@@ -310,7 +304,21 @@
                 "padding-block-end": 24,
                 "padding-inline-start": 24,
                 "padding-inline-end": 24
-              }
+              },
+              "blocks": {
+                "circle_logo": {
+                  "type": "image",
+                  "settings": {
+                    "image": "shopify://shop_images/mn-jade-mark.png",
+                    "image_ratio": "adapt",
+                    "width": "fit-content",
+                    "width_mobile": "fit-content"
+                  }
+                }
+              },
+              "block_order": [
+                "circle_logo"
+              ]
             },
             "card_title": {
               "type": "text",
@@ -325,25 +333,17 @@
           "block_order": [
             "custom_circle",
             "card_title"
-          ],
-          "settings": {
-            "content_direction": "column",
-            "horizontal_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill",
-            "width_mobile": "fill",
-            "height": "fit"
-          }
+          ]
         }
       },
       "block_order": [
         "custom_link_card"
       ],
       "settings": {
-        "section_width": "page-width",
         "content_direction": "column",
         "horizontal_alignment_flex_direction_column": "center",
         "gap": 32,
+        "section_width": "page-width",
         "padding-block-start": 0,
         "padding-block-end": 96
       }

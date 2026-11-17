@@ -18,12 +18,12 @@
           "settings": {
             "title": "your cart",
             "show_count": false,
+            "type_preset": "h1",
             "alignment": "left",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
-            "padding-inline-end": 0,
-            "type_preset": "h1"
+            "padding-inline-end": 0
           },
           "blocks": {}
         },
@@ -47,11 +47,11 @@
           "static": true,
           "settings": {
             "extend_summary": false,
+            "background_color": "{{ settings.color_palette.color3 }}",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
-            "border_radius": 32,
-            "background_color": "{{ settings.color_palette.color3 }}"
+            "border_radius": 32
           },
           "blocks": {}
         },
@@ -59,20 +59,20 @@
           "type": "button",
           "settings": {
             "label": "keep shopping",
-            "link": "shopify://collections/shop",
+            "link": "shopify://collections/shop-old",
             "style_class": "button-unstyled"
           }
         }
       },
+      "block_order": [
+        "keep_shopping"
+      ],
       "settings": {
         "section_width": "page-width",
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 64,
         "padding-block-end": 100
-      },
-      "block_order": [
-        "keep_shopping"
-      ]
+      }
     }
   },
   "order": [

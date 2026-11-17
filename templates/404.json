@@ -65,7 +65,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "Continue shopping",
-            "link": "shopify://collections/shop",
+            "link": "shopify://collections/shop-old",
             "open_in_new_tab": false,
             "style_class": "button",
             "width": "fit-content",
@@ -301,7 +301,7 @@
       },
       "name": "t:names.product_list",
       "settings": {
-        "collection": "shop",
+        "collection": "shop-old",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 4,
