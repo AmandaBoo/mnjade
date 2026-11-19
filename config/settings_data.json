@@ -12,7 +12,7 @@
     "logo": "shopify://shop_images/mn-jade-logo.png",
     "logo_height": 59,
     "logo_height_mobile": 40,
-    "favicon": "shopify://shop_images/mn-jade-favicon.png",
+    "favicon": "shopify://shop_images/mn-jade-favicon-green.png",
     "page_text_color": "{{ settings.color_palette.foreground }}",
     "type_body_font": "nunito_n4",
     "type_subheading_font": "quicksand_n6",
@@ -83,6 +83,7 @@
     "palette_selected_variant_border": "{{ settings.color_palette.foreground }}",
     "variant_button_radius": 100,
     "variant_button_width": "default-width-buttons",
+    "content_for_index": [],
     "color_palette": {
       "background": "#ffffff",
       "foreground": "#111111",
