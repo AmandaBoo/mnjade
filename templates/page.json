@@ -46,7 +46,8 @@
                 "text": "{{ closest.page.content }}",
                 "width": "100%",
                 "alignment": "left",
-                "type_preset": "rte"
+                "type_preset": "rte",
+                "max_width": "none"
               }
             }
           },

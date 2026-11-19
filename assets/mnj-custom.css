@@ -483,6 +483,11 @@ media-gallery slideshow-arrows {
   display: none;
 }
 
+/* Pages: the gray text panel stops at 960px wide, like the design and the policy pages */
+[id$='__info_body'] .group-block {
+  max-width: 960px;
+}
+
 /* Pages: "say hi" link under each page's text (templates/page.json) */
 [id$='__say_hi'] a {
   border-block-end: 2px solid var(--color-foreground);

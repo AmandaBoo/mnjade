@@ -84,7 +84,8 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
 
 - **Store name:** `MN JADE` in Settings. The copyright line and the logo's alt text read it.
 - **Logo files** in Content > Files: `mn-jade-logo.png` (header), `mn-jade-mark.png` (footer)
-  and `mn-jade-favicon.png`. The theme points at these names, so replace a file by uploading
+  and `mn-jade-favicon-green.png` (the flower in #7EBD7C, matching the shop page's custom order
+  circle, on a see-through background). The theme points at these names, so replace a file by uploading
   one with the same name, or pick a new one in the theme editor. They're cropped from the
   design canvas; the wordmark font, Fredoka, is drawn into the logo image, so the site's text
   fonts don't change.
