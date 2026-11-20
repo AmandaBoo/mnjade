@@ -52,7 +52,8 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
 - `sections/footer-group.json`: newsletter section, policy list and old columns removed;
   one centered group with a divider, the flower mark image and the `footer` menu; copyright
   with "Powered by Shopify" off.
-- `templates/index.json`: hero with the sticker, `✿ favorites ✿` product list with a
+- `templates/index.json`: hero with the sticker, `✿ favorites ✿` product list (the manual
+  `favorites` collection, first 3 in its manual order) with a
   `shop all` button, `follow along` panel with four image blocks and `instagram` and `tiktok` buttons side by side.
 - `templates/collection.json`: `✿ collection title ✿` heading (`✿ shop ✿` on the all tab), `mnj-collection-tabs` tabs, empty message, product grid with filtering and sorting
   on (sorting and grid density off), and a green circle with the logo and a `custom order form` label, linking to `/pages/custom`.
@@ -98,7 +99,8 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
   `how it works` on custom.
 - **Form messages** from the contact and custom pages arrive in the store's contact email, marked
   `contact` or `custom request`.
-- **Collections:** handles `shop`, `necklaces`, `bracelets`, `earrings`, `charms`. The `shop` collection is
+- **Collections:** handles `shop`, `necklaces`, `bracelets`, `earrings`, `charms`, plus `favorites`
+  (manual, not in the menu) for the homepage. The `shop` collection is
   automated (every product not tagged `hidden`) and titled `shop`, which is its page heading; its tab says
   `all` from the tabs block's "First tab label". The tab label is the
   collection's title. Tabs are picked in the `mnj-collection-tabs` block's settings.
