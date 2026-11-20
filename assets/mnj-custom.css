@@ -26,7 +26,8 @@
 .predictive-search__reset-button,
 input.search-input::placeholder,
 .product-badges__badge,
-.facets__clear-all-link {
+.facets__clear-all-link,
+.sorting-filter {
   text-transform: lowercase;
 }
 
