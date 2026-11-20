@@ -179,7 +179,8 @@ size, and the menu's font size and weight.
      `--menu-top-level-*` and `--padding-block-*` variables
    - **Phone header:** `.header-drawer`, `.menu-list--mobile`, and the `leftA` grid area
    - **Cards and gallery:** circular images on `.card-gallery` and `media-gallery`
-   - **Product page:** `.product-information__grid` columns, recommendations layout
+   - **Product page:** `.product-information__grid` columns, recommendations layout, and the details
+     card's side padding on phones (`.product-details > .group-block`, which Horizon clears to 0)
    - **Shop page:** `.main-collection-grid__empty` (the tabs are our own block); filters by
      `.facets__form`, `.facets__filters-wrapper`, `.products-count-wrapper`, `.facets-horizontal-remove`
      and `.facets-toggle`; sold-out cards by `.color-custom-badge-sold-out`, `.product-badges` and `.price`

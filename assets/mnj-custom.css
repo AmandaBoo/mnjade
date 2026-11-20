@@ -355,6 +355,15 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   }
 }
 
+/* Product, phones: Horizon clears the details card's side padding because it expects no
+   border; ours has one, so the card keeps its own padding setting. #MainContent outranks
+   Horizon's section--page-width rule. */
+@media screen and (max-width: 749px) {
+  #MainContent .product-details > .group-block {
+    padding-inline: var(--padding-inline-start) var(--padding-inline-end);
+  }
+}
+
 /* Product: thumbnails navigate the gallery, so the arrows over the circle go */
 media-gallery slideshow-arrows {
   display: none;
