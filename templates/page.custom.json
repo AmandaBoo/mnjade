@@ -319,7 +319,7 @@
         "lookbook_intro": {
           "type": "text",
           "settings": {
-            "text": "<p>some examples of what I can source or make for you. if it's not here, ask anyway.</p>",
+            "text": "<p>some examples of what I can source or make for you</p>",
             "width": "100%",
             "max_width": "narrow",
             "alignment": "center",
