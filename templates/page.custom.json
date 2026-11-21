@@ -445,7 +445,7 @@
                 "item_1_title": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>jade bangles | icy jade bracelets</p>",
+                    "text": "<p>jade bangles</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -700,7 +700,7 @@
                 "item_4_image": {
                   "type": "image",
                   "settings": {
-                    "image": "shopify://shop_images/IMG_7630.heic",
+                    "image": "shopify://shop_images/IMG_7587.jpg",
                     "link": "",
                     "image_ratio": "square",
                     "width": "fill",
@@ -723,7 +723,7 @@
                 "item_4_title": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>lilypad jade necklace</p>",
+                    "text": "<p>earrings, necklaces, bracelets&nbsp;</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
