@@ -365,9 +365,19 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   }
 }
 
-/* Product: thumbnails navigate the gallery, so the arrows over the circle go */
-media-gallery slideshow-arrows {
-  display: none;
+/* Product, phones: Horizon runs the gallery edge to edge, which clips the sides of the circle.
+   It gets the same page margin as the details card below. Horizon also hides the arrows on
+   phones with its !important mobile:hidden utility; they stay, so it's clear there's more
+   than one photo (swiping works too). */
+@media screen and (max-width: 749px) {
+  .product-information__media {
+    padding-inline: var(--page-margin);
+  }
+
+  media-gallery slideshow-arrows.mobile\:hidden {
+    /* stylelint-disable-next-line declaration-no-important */
+    display: flex !important;
+  }
 }
 
 /* Product: plain "add to cart" label, no icon */

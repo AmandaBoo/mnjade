@@ -57,7 +57,7 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
   `shop all` button, `follow along` panel with four image blocks and `instagram` and `tiktok` buttons side by side.
 - `templates/collection.json`: `✿ collection title ✿` heading (`✿ shop ✿` on the all tab), `mnj-collection-tabs` tabs, empty message, product grid with filtering and sorting
   on (sorting and grid density off), and a green circle with the logo and a `custom order form` label, linking to `/pages/custom`.
-- `templates/product.json`: carousel gallery with 72px thumbnails, bordered details card,
+- `templates/product.json`: carousel gallery with 72px thumbnails, arrows (shown on phones too) and zoom off, bordered details card,
   `more little friends` panel using the recommendations block. Quantity and accelerated
   checkout are disabled static blocks. Sticky add to cart is off.
 - `templates/cart.json`: `your cart` title, gray summary panel, `keep shopping` link.
@@ -180,7 +180,8 @@ size, and the menu's font size and weight.
    - **Header:** `.header-actions__action`, `.cart-bubble`, `.menu-list__link`, and the
      `--menu-top-level-*` and `--padding-block-*` variables
    - **Phone header:** `.header-drawer`, `.menu-list--mobile`, and the `leftA` grid area
-   - **Cards and gallery:** circular images on `.card-gallery` and `media-gallery`
+   - **Cards and gallery:** circular images on `.card-gallery` and `media-gallery`; on phones the
+     gallery's `--page-margin` inset on `.product-information__media` and the arrows' `.mobile\:hidden` override
    - **Product page:** `.product-information__grid` columns, recommendations layout, and the details
      card's side padding on phones (`.product-details > .group-block`, which Horizon clears to 0)
    - **Shop page:** `.main-collection-grid__empty` (the tabs are our own block); filters by
