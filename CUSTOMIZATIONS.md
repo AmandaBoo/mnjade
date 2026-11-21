@@ -66,7 +66,8 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
 - `templates/page.about.json` (new): about. Title, a 520px banner image, a heading over the
   page's text, three circular photos and a `shop all` button.
 - `templates/page.custom.json` (new): `✿ page title ✿`, the `mnj-custom-request-form` in a gray panel, and a
-  `how it works` column with the page's text and a circle photo.
+  `how it works` column with the page's text and a circle photo, then `✿ things I can help you find ✿`: five
+  circle photos, each with a name and a line, all editable in the theme editor.
 - `templates/page.contact.json`: `✿ say hi ✿`, the `mnj-custom-request-form` in a gray panel with a
   `what's it about?` dropdown, and an instagram, tiktok and photo column.
 
@@ -191,7 +192,7 @@ size, and the menu's font size and weight.
    - **Policy pages:** `.shopify-policy__container`, `__title` and `__body`, which come from
      Shopify rather than Horizon
    - **Pages:** sections are styled by their template key (`__say_hi`, `__about_banner`,
-     `__about_circles`, `__contact_main`, `__custom_main`, and `__custom_card` on the shop page, whose
+     `__about_circles`, `__contact_main`, `__custom_main`, `__custom_lookbook` (its rows of circles), and `__custom_card` on the shop page, whose
      label link is stretched over the card), and the phone field by `#ContactForm-phone` if Horizon's contact form is added back
    - **Search overlay:** `.search-modal__content`, `.predictive-search-*`, `.resource-card__*`.
      Check it open, with results, with no results, and at phone width

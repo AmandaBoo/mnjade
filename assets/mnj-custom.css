@@ -579,7 +579,9 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
 [id$='__contact_main'] .image-block img,
 [id$='__contact_main'] .placeholder-image,
 [id$='__custom_main'] .image-block img,
-[id$='__custom_main'] .placeholder-image {
+[id$='__custom_main'] .placeholder-image,
+[id$='__custom_lookbook'] .image-block img,
+[id$='__custom_lookbook'] .placeholder-image {
   border-radius: 50%;
 }
 
@@ -600,6 +602,37 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
 
 .contact-form__input::placeholder {
   text-transform: lowercase;
+}
+
+/* Custom: "things I can help you find", the five circles in rows that wrap and centre, five
+   across at 1180px, two across on phones; each line under a circle is muted */
+[id$='__custom_lookbook'] .group-block-content.layout-panel-flex--row {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px 24px;
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  margin-block-start: 24px;
+}
+
+[id$='__custom_lookbook'] .layout-panel-flex--row > .group-block {
+  flex: 0 1 216px;
+  min-width: 0;
+}
+
+[id$='__custom_lookbook'] .layout-panel-flex--column > .text-block:last-child {
+  color: rgb(var(--color-foreground-rgb) / var(--opacity-70));
+}
+
+@media screen and (max-width: 749px) {
+  [id$='__custom_lookbook'] .group-block-content.layout-panel-flex--row {
+    gap: 24px 16px;
+  }
+
+  [id$='__custom_lookbook'] .layout-panel-flex--row > .group-block {
+    flex-basis: calc(50% - 8px);
+  }
 }
 
 /* Footer: the flower mark, 41px tall and slightly faded */
