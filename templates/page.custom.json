@@ -422,6 +422,7 @@
                 "item_1_image": {
                   "type": "image",
                   "settings": {
+                    "image": "shopify://shop_images/B2D2AB01-3AD5-4B28-A543-CC60A2E633EB_1_105_c.jpg",
                     "link": "",
                     "image_ratio": "square",
                     "width": "fill",
@@ -444,7 +445,7 @@
                 "item_1_title": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>jade bangle</p>",
+                    "text": "<p>jade bangles</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -536,7 +537,7 @@
                 "item_2_title": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>jade ring</p>",
+                    "text": "<p>jade rings</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -606,6 +607,7 @@
                 "item_3_image": {
                   "type": "image",
                   "settings": {
+                    "image": "shopify://shop_images/638D262B-DADD-4D7E-A167-F6F6A7C0EEC3_1_201_a.heic",
                     "link": "",
                     "image_ratio": "square",
                     "width": "fill",
@@ -628,7 +630,7 @@
                 "item_3_title": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>chain</p>",
+                    "text": "<p>jade bracelets</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -698,6 +700,7 @@
                 "item_4_image": {
                   "type": "image",
                   "settings": {
+                    "image": "shopify://shop_images/IMG_7630.heic",
                     "link": "",
                     "image_ratio": "square",
                     "width": "fill",
@@ -720,7 +723,7 @@
                 "item_4_title": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>a tweak</p>",
+                    "text": "<p>lilypad jade necklace</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -790,6 +793,7 @@
                 "item_5_image": {
                   "type": "image",
                   "settings": {
+                    "image": "shopify://shop_images/7D1886EF-9314-4CA0-AE63-F00E5438E964_1_201_a.heic",
                     "link": "",
                     "image_ratio": "square",
                     "width": "fill",
@@ -812,7 +816,7 @@
                 "item_5_title": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>bring it back</p>",
+                    "text": "<p>kyara agarwood</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
