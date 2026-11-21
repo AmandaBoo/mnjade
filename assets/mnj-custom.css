@@ -604,8 +604,8 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   text-transform: lowercase;
 }
 
-/* Custom: "things I can help you find", the five circles in rows that wrap and centre, five
-   across at 1180px, two across on phones; each line under a circle is muted */
+/* Custom: "things I can help you find", the five named circles in rows that wrap and centre,
+   five across at 1180px, two across on phones */
 [id$='__custom_lookbook'] .group-block-content.layout-panel-flex--row {
   flex-wrap: wrap;
   justify-content: center;
@@ -619,10 +619,6 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
 [id$='__custom_lookbook'] .layout-panel-flex--row > .group-block {
   flex: 0 1 216px;
   min-width: 0;
-}
-
-[id$='__custom_lookbook'] .layout-panel-flex--column > .text-block:last-child {
-  color: rgb(var(--color-foreground-rgb) / var(--opacity-70));
 }
 
 @media screen and (max-width: 749px) {

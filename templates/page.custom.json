@@ -465,37 +465,11 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
-                },
-                "item_1_text": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>a solid bangle, sized to you</p>",
-                    "width": "100%",
-                    "max_width": "narrow",
-                    "alignment": "center",
-                    "type_preset": "paragraph",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
                 }
               },
               "block_order": [
                 "item_1_image",
-                "item_1_title",
-                "item_1_text"
+                "item_1_title"
               ]
             },
             "item_2": {
@@ -583,37 +557,11 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
-                },
-                "item_2_text": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>a single cabochon on a thin band</p>",
-                    "width": "100%",
-                    "max_width": "narrow",
-                    "alignment": "center",
-                    "type_preset": "paragraph",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
                 }
               },
               "block_order": [
                 "item_2_image",
-                "item_2_title",
-                "item_2_text"
+                "item_2_title"
               ]
             },
             "item_3": {
@@ -701,37 +649,11 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
-                },
-                "item_3_text": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>a longer or layered chain for a pendant you already own</p>",
-                    "width": "100%",
-                    "max_width": "narrow",
-                    "alignment": "center",
-                    "type_preset": "paragraph",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
                 }
               },
               "block_order": [
                 "item_3_image",
-                "item_3_title",
-                "item_3_text"
+                "item_3_title"
               ]
             },
             "item_4": {
@@ -819,37 +741,11 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
-                },
-                "item_4_text": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>an existing design in a different stone or length</p>",
-                    "width": "100%",
-                    "max_width": "narrow",
-                    "alignment": "center",
-                    "type_preset": "paragraph",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
                 }
               },
               "block_order": [
                 "item_4_image",
-                "item_4_title",
-                "item_4_text"
+                "item_4_title"
               ]
             },
             "item_5": {
@@ -937,37 +833,11 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
-                },
-                "item_5_text": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>a sold-out piece made once more for you</p>",
-                    "width": "100%",
-                    "max_width": "narrow",
-                    "alignment": "center",
-                    "type_preset": "paragraph",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
                 }
               },
               "block_order": [
                 "item_5_image",
-                "item_5_title",
-                "item_5_text"
+                "item_5_title"
               ]
             }
           },
