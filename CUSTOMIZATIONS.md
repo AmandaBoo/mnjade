@@ -104,7 +104,8 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
   (manual, not in the menu) for the homepage. The `shop` collection is
   automated (every product not tagged `hidden`) and titled `shop`, which is its page heading; its tab says
   `all` from the tabs block's "First tab label". The tab label is the
-  collection's title. Tabs are picked in the `mnj-collection-tabs` block's settings.
+  collection's title. Tabs are picked in the `mnj-collection-tabs` block's settings;
+  `charms` is left out of the tabs for now (the collection still exists).
 - **Filters** come from the Search & Discovery app (Apps > Search & Discovery > Filters). The length
   filter reads the products' `Length` variant option.
 - **Interface wording:** Horizon's locale strings can be changed in Online Store > Themes >
