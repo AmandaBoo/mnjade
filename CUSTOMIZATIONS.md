@@ -182,7 +182,7 @@ size, and the menu's font size and weight.
    - **Phone header:** `.header-drawer`, `.menu-list--mobile`, and the `leftA` grid area
    - **Cards and gallery:** circular images on `.card-gallery` and `media-gallery`; on phones the
      gallery's `--page-margin` inset on `.product-information__media` and the arrows' `.mobile\:hidden` override
-   - **Product page:** `.product-information__grid` columns, recommendations layout, and the details
+   - **Product page:** `.product-information__grid` columns (stacked and 560px wide from 750 to 999px), recommendations layout, and the details
      card's side padding on phones (`.product-details > .group-block`, which Horizon clears to 0)
    - **Shop page:** `.main-collection-grid__empty` (the tabs are our own block); filters by
      `.facets__form`, `.facets__filters-wrapper`, `.products-count-wrapper`, `.facets-horizontal-remove`

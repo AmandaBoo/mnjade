@@ -356,6 +356,19 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   }
 }
 
+/* Product, half-width windows and tablets: beside a 448px card the gallery shrinks to a few
+   hundred pixels, so gallery and card stack like on phones, centred at a card-like width */
+@media screen and (min-width: 750px) and (max-width: 999px) {
+  #MainContent .product-information--media-left {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 560px;
+  }
+
+  #MainContent .product-information--media-left :is(.product-information__media, .product-details) {
+    padding-inline: 0;
+  }
+}
+
 /* Product, phones: Horizon clears the details card's side padding because it expects no
    border; ours has one, so the card keeps its own padding setting. #MainContent outranks
    Horizon's section--page-width rule. */
