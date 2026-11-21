@@ -66,7 +66,7 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
 - `templates/page.about.json` (new): about. Title, a 520px banner image, a heading over the
   page's text, three circular photos and a `shop all` button.
 - `templates/page.custom.json` (new): `✿ page title ✿`, the `mnj-custom-request-form` in a gray panel, and a
-  `how it works` column with the page's text and a circle photo, then `✿ things I can help you find ✿`: five
+  `how it works` column with the page's text and a circle photo, then `✿ things I can help you find ✿`:
   circle photos, each with a name, all editable in the theme editor.
 - `templates/page.contact.json`: `✿ say hi ✿`, the `mnj-custom-request-form` in a gray panel with a
   `what's it about?` dropdown, and an instagram, tiktok and photo column.

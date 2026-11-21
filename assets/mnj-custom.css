@@ -604,7 +604,7 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   text-transform: lowercase;
 }
 
-/* Custom: "things I can help you find", the five named circles in rows that wrap and centre,
+/* Custom: "things I can help you find", named circles in rows that wrap and centre, up to
    five across at 1180px, two across on phones */
 [id$='__custom_lookbook'] .group-block-content.layout-panel-flex--row {
   flex-wrap: wrap;
