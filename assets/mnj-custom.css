@@ -233,6 +233,32 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   display: none;
 }
 
+/* Shop: the tabs and the filter row (the "filter" button on phones) stay pinned under the sticky
+   header while scrolling. Horizon pins the header at -1px, hence the 1px less. The tab bar is one
+   40px row plus its section's 24px bottom padding, which Horizon's spacing scale shrinks on phones,
+   so the filters sit that much lower (the same sum as Horizon's spacing-style) */
+[data-template^='collection'] {
+  --mnj-shop-tabs-height: calc(40px + max(20px, calc(var(--spacing-scale-md) * 24px)));
+
+  @media screen and (min-width: 990px) {
+    --mnj-shop-tabs-height: calc(40px + max(20px, calc(var(--spacing-scale-default) * 24px)));
+  }
+}
+
+[data-template^='collection'] .shopify-section[id$='__shop_tabs'] {
+  position: sticky;
+  top: calc(var(--header-height, 0px) - 1px);
+  z-index: calc(var(--layer-sticky) - 1);
+  background-color: var(--color-background);
+}
+
+[data-template^='collection'] :is(.facets-block-wrapper, .facets-toggle) {
+  position: sticky;
+  top: calc(var(--header-height, 0px) - 1px + var(--mnj-shop-tabs-height));
+  z-index: calc(var(--layer-sticky) - 1);
+  background-color: var(--color-background);
+}
+
 /* No "filter" button (phones) when the collection has no products to filter */
 [data-template^='collection'] .shopify-section:has(.main-collection-grid__empty) .facets-toggle {
   display: none;

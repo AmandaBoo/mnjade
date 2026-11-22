@@ -45,8 +45,9 @@ It has to stay after `content_for_header` so it loads after Horizon's component 
 
 ## Templates and section groups changed
 
-- `sections/header-group.json`: announcement bar removed; logo centered with the menu on
-  the row below; country and language selectors off; sticky header off; transparent home
+- `sections/header-group.json`: announcement bar on top (black, white 14px text, edited in the theme
+  editor); logo centered with the menu on
+  the row below; country and language selectors off; sticky header always on (the announcement bar scrolls away); transparent home
   header off; 1px color4 bottom border; text-style menu; phone navigation bar on, with the
   hamburger hidden in the stylesheet.
 - `sections/footer-group.json`: newsletter section, policy list and old columns removed;
@@ -145,9 +146,13 @@ Neither runs in the theme editor. If the `shop` handle changes, update both.
   collection page has its own main heading for search engines.
 - **Shop filters:** not in the design. They sit centred under the tabs, without Horizon's product
   count; on phones they open from a `filter` button.
+- **Pinned shop bar:** not in the design; added on request. The tabs and filters (the `filter` button on
+  phones) stay under the sticky header while scrolling; the `✿ shop ✿` heading scrolls away. Phone tabs
+  stay on one row.
 - **Sold out:** Horizon's badge, lowercased and moved onto the photo's circle, and the card's price is
   struck through.
 - **Favorites row:** cards fill the row at about 443px wide rather than the design's 400px.
+- **Announcement bar and pinned header:** not in the design; added on request (Nov 2026).
 - **Muted text:** `#888888` on white is about 3.5:1, below the 4.5:1 guideline for small text.
 - **Phones:** the design doesn't cover them. The logo drops to 24px, and `shop` and `about`
   sit in a row under it instead of a hamburger. A menu with many links would need the
@@ -188,7 +193,7 @@ size, and the menu's font size and weight.
      card's side padding on phones (`.product-details > .group-block`, which Horizon clears to 0)
    - **Shop page:** `.main-collection-grid__empty` (the tabs are our own block); filters by
      `.facets__form`, `.facets__filters-wrapper`, `.products-count-wrapper`, `.facets-horizontal-remove`
-     and `.facets-toggle`; sold-out cards by `.color-custom-badge-sold-out`, `.product-badges` and `.price`
+     and `.facets-toggle` (both pinned with `--header-height`, which Horizon's sticky header sets); sold-out cards by `.color-custom-badge-sold-out`, `.product-badges` and `.price`
    - **Cart:** `.cart-items__*` rows, `.cart-summary__inner`, the text "remove" link
    - **Policy pages:** `.shopify-policy__container`, `__title` and `__body`, which come from
      Shopify rather than Horizon

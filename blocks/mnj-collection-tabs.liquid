@@ -76,6 +76,23 @@
   .mnj-collection-tabs__link[aria-current='page'] {
     border-block-end-color: var(--color-foreground);
   }
+
+  /* Phones: one row (it scrolls sideways if there are ever too many tabs), so the pinned tab bar
+     keeps a single height */
+  @media screen and (max-width: 749px) {
+    .mnj-collection-tabs__list {
+      flex-wrap: nowrap;
+      justify-content: safe center;
+      gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .mnj-collection-tabs__link {
+      flex-shrink: 0;
+      padding-inline: 10px;
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}
