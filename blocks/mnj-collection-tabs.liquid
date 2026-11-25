@@ -1,5 +1,5 @@
 {% doc %}
-  Renders a centered row of collection links as underlined text tabs. The link for the
+  Renders a row of collection links (centred or left-aligned) as underlined text tabs. The link for the
   collection being viewed is marked with aria-current and underlined, set in the page's
   HTML so it stays put when the pointer moves over the row. Tabs show each collection's
   title; the first tab can have its own label (the shop collection is titled "shop" for
@@ -15,7 +15,7 @@
 
 {% if block.settings.collections != blank %}
   <nav
-    class="mnj-collection-tabs"
+    class="mnj-collection-tabs mnj-collection-tabs--{{ block.settings.alignment }}"
     aria-label="{{ block.settings.label | escape }}"
     {{ block.shopify_attributes }}
   >
@@ -56,6 +56,10 @@
     margin: 0;
   }
 
+  .mnj-collection-tabs--left .mnj-collection-tabs__list {
+    justify-content: flex-start;
+  }
+
   .mnj-collection-tabs__link {
     display: inline-flex;
     align-items: center;
@@ -88,6 +92,10 @@
       scrollbar-width: none;
     }
 
+    .mnj-collection-tabs--left .mnj-collection-tabs__list {
+      justify-content: flex-start;
+    }
+
     .mnj-collection-tabs__link {
       flex-shrink: 0;
       padding-inline: 10px;
@@ -116,6 +124,16 @@
       "id": "label",
       "label": "Label for screen readers",
       "default": "collections"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
     }
   ],
   "presets": [

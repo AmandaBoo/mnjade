@@ -66,7 +66,11 @@
             "padding-block-start": 40,
             "padding-block-end": 40,
             "padding-inline-start": 40,
-            "padding-inline-end": 40
+            "padding-inline-end": 40,
+            "border": "solid",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "#E3E4DE"
           }
         }
       },

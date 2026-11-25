@@ -54,13 +54,13 @@
             "gap": 28,
             "sticky_details_desktop": false,
             "background_media": "none",
-            "background_color": "",
+            "background_color": "{{ settings.color_palette.color3 }}",
             "video_position": "cover",
             "background_image_position": "cover",
             "border": "solid",
             "border_width": 1,
             "border_opacity": 100,
-            "border_color": "{{ settings.color_palette.color4 }}",
+            "border_color": "#E3E4DE",
             "border_radius": 32,
             "padding-block-start": 32,
             "padding-block-end": 32,
@@ -76,10 +76,10 @@
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h2",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
+                "type_preset": "custom",
+                "font": "var(--font-heading--family)",
+                "font_size": "3rem",
+                "line_height": "tight",
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
@@ -104,7 +104,7 @@
                 "width": "100%",
                 "alignment": "left",
                 "font": "var(--font-body--family)",
-                "font_size": "1.125rem",
+                "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -225,14 +225,106 @@
                 }
               },
               "block_order": []
+            },
+            "product_accordion": {
+              "type": "mnj-product-accordion",
+              "blocks": {
+                "sizing_bracelet": {
+                  "type": "_mnj-accordion-row",
+                  "settings": {
+                    "heading": "sizing",
+                    "icon": "ruler",
+                    "text": "<p>Measure your wrist with a soft tape measure and choose a matching length for a comfortable fit, or size up ½\" for a loose fit.</p>",
+                    "product_types": "bracelet, bracelets",
+                    "description_contains": "",
+                    "description_excludes": "",
+                    "source": "text"
+                  },
+                  "blocks": {}
+                },
+                "care_bracelet": {
+                  "type": "_mnj-accordion-row",
+                  "settings": {
+                    "heading": "care",
+                    "icon": "leather",
+                    "text": "<p>Jade is very durable, but keep it away from harsh cleansers. Roll your bracelet on and off rather than stretching the cord, and wipe the jade with a soft, dry cloth.</p>",
+                    "product_types": "bracelet, bracelets",
+                    "description_contains": "",
+                    "description_excludes": "",
+                    "source": "text"
+                  },
+                  "blocks": {}
+                },
+                "care_necklace": {
+                  "type": "_mnj-accordion-row",
+                  "settings": {
+                    "heading": "care",
+                    "icon": "leather",
+                    "text": "<p>Jade is very durable, but keep it away from harsh cleansers. Wipe the jade with a soft, dry cloth.</p>",
+                    "product_types": "necklace, necklaces",
+                    "description_contains": "",
+                    "description_excludes": "sterling silver",
+                    "source": "text"
+                  },
+                  "blocks": {}
+                },
+                "care_necklace_silver": {
+                  "type": "_mnj-accordion-row",
+                  "settings": {
+                    "heading": "care",
+                    "icon": "leather",
+                    "text": "<p>Jade is very durable, but keep it away from harsh cleansers. Store your necklace in an airtight pouch when you’re not wearing it. To polish, gently buff the sterling silver with a silver polishing cloth and wipe the jade with a soft, dry cloth.</p>",
+                    "product_types": "necklace, necklaces",
+                    "description_contains": "sterling silver",
+                    "description_excludes": "",
+                    "source": "text"
+                  },
+                  "blocks": {}
+                },
+                "care_earrings": {
+                  "type": "_mnj-accordion-row",
+                  "settings": {
+                    "heading": "care",
+                    "icon": "leather",
+                    "text": "<p>Jade is very durable, but keep it away from harsh cleansers. Store your earrings in an airtight pouch when you’re not wearing them. To polish, gently buff the sterling silver with a silver polishing cloth and wipe the jade with a soft, dry cloth.</p>",
+                    "product_types": "earrings, earring",
+                    "description_contains": "sterling silver",
+                    "description_excludes": "",
+                    "source": "text"
+                  },
+                  "blocks": {}
+                },
+                "details": {
+                  "type": "_mnj-accordion-row",
+                  "settings": {
+                    "heading": "details",
+                    "icon": "ruler",
+                    "source": "description_list",
+                    "text": "",
+                    "product_types": "",
+                    "description_contains": "",
+                    "description_excludes": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "details",
+                "sizing_bracelet",
+                "care_bracelet",
+                "care_necklace",
+                "care_necklace_silver",
+                "care_earrings"
+              ]
             }
           },
           "block_order": [
             "text_GnyQiN",
             "price_a7krng",
-            "product_description_LfDYCg",
             "variant_picker_R3rGDr",
-            "buy_buttons_eYQEYi"
+            "buy_buttons_eYQEYi",
+            "product_description_LfDYCg",
+            "product_accordion"
           ]
         }
       },
@@ -264,7 +356,7 @@
             "border": "solid",
             "border_width": 1,
             "border_opacity": 100,
-            "border_color": "{{ settings.color_palette.color4 }}",
+            "border_color": "#E3E4DE",
             "border_radius": 32,
             "padding-block-start": 72,
             "padding-block-end": 72,

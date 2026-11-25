@@ -1,0 +1,443 @@
+{% doc %}
+  Renders one expandable row of the MN JADE product accordion with native details and summary, for
+  the product in context. Its text is either its own text setting or, with source set to the
+  description's bullet list, the first bulleted list in the product description (the spec bullets),
+  which the stylesheet then hides in the description itself. The row only renders when the product's
+  Type is one of its product types (or none are set), its description passes the contains and
+  excludes checks (all compared in lowercase) and it has text. In the theme editor without a
+  product, every row with its own text shows.
+
+  @example
+  {% content_for 'block', type: '_mnj-accordion-row', id: 'care' %}
+{% enddoc %}
+
+{% liquid
+  assign product = closest.product
+  assign show_row = true
+
+  if product != blank
+    assign product_type = product.type | downcase | strip
+    assign description = product.description | strip_html | downcase
+
+    if block.settings.product_types != blank
+      assign show_row = false
+      assign types = block.settings.product_types | downcase | split: ','
+      for type in types
+        assign wanted = type | strip
+        if wanted == product_type
+          assign show_row = true
+        endif
+      endfor
+    endif
+
+    if block.settings.description_contains != blank
+      assign needle = block.settings.description_contains | downcase | strip
+      unless description contains needle
+        assign show_row = false
+      endunless
+    endif
+
+    if block.settings.description_excludes != blank
+      assign needle = block.settings.description_excludes | downcase | strip
+      if description contains needle
+        assign show_row = false
+      endif
+    endif
+  endif
+
+  assign row_text = block.settings.text
+  if block.settings.source == 'description_list'
+    assign row_text = ''
+    if product.description contains '<ul'
+      assign list_body = product.description | split: '<ul' | slice: 1, 1 | first | split: '</ul>' | first
+      assign row_text = '<ul' | append: list_body | append: '</ul>'
+    endif
+  endif
+
+  if block.settings.heading == blank or row_text == blank
+    assign show_row = false
+  endif
+%}
+
+{% if show_row %}
+  <details
+    class="mnj-accordion-row{% if block.settings.source == 'description_list' %} mnj-accordion-row--description-list{% endif %}"
+    {{ block.shopify_attributes }}
+  >
+    <summary class="mnj-accordion-row__summary">
+      {%- if block.settings.icon != 'none' -%}
+        <svg
+          class="mnj-accordion-row__icon"
+          aria-hidden="true"
+          focusable="false"
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+        >
+          {%- render 'icon', icon: block.settings.icon -%}
+        </svg>
+      {%- endif -%}
+      <span class="mnj-accordion-row__heading">{{ block.settings.heading | escape }}</span>
+      <span class="svg-wrapper mnj-accordion-row__caret" aria-hidden="true">
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </span>
+    </summary>
+    <div class="mnj-accordion-row__content rte">
+      {{ row_text }}
+    </div>
+  </details>
+{% endif %}
+
+{% stylesheet %}
+  .mnj-accordion-row {
+    border-block-end: 1px solid var(--color-border);
+  }
+
+  .mnj-accordion-row__summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 56px;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 600;
+  }
+
+  .mnj-accordion-row__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mnj-accordion-row__icon {
+    flex: none;
+  }
+
+  .mnj-accordion-row__heading {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .mnj-accordion-row__caret {
+    flex: none;
+    width: 12px;
+    transition: transform var(--animation-speed) var(--animation-easing);
+  }
+
+  .mnj-accordion-row[open] .mnj-accordion-row__caret {
+    transform: rotate(180deg);
+  }
+
+  .mnj-accordion-row__content {
+    padding-block-end: 20px;
+    overflow-wrap: anywhere;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mnj-accordion-row__caret {
+      transition: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "MN JADE accordion row",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "care"
+    },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "t:settings.icon",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:options.none"
+        },
+        {
+          "value": "apple",
+          "label": "t:options.apple"
+        },
+        {
+          "value": "arrow",
+          "label": "t:options.arrow"
+        },
+        {
+          "value": "banana",
+          "label": "t:options.banana"
+        },
+        {
+          "value": "bottle",
+          "label": "t:options.bottle"
+        },
+        {
+          "value": "box",
+          "label": "t:options.box"
+        },
+        {
+          "value": "carrot",
+          "label": "t:options.carrot"
+        },
+        {
+          "value": "chat_bubble",
+          "label": "t:options.chat_bubble"
+        },
+        {
+          "value": "check_box",
+          "label": "t:options.check_box"
+        },
+        {
+          "value": "clipboard",
+          "label": "t:options.clipboard"
+        },
+        {
+          "value": "dairy",
+          "label": "t:options.dairy"
+        },
+        {
+          "value": "dairy_free",
+          "label": "t:options.dairy_free"
+        },
+        {
+          "value": "dryer",
+          "label": "t:options.dryer"
+        },
+        {
+          "value": "eye",
+          "label": "t:options.eye"
+        },
+        {
+          "value": "fire",
+          "label": "t:options.fire"
+        },
+        {
+          "value": "gluten_free",
+          "label": "t:options.gluten_free"
+        },
+        {
+          "value": "heart",
+          "label": "t:options.heart"
+        },
+        {
+          "value": "iron",
+          "label": "t:options.iron"
+        },
+        {
+          "value": "leaf",
+          "label": "t:options.leaf"
+        },
+        {
+          "value": "leather",
+          "label": "t:options.leather"
+        },
+        {
+          "value": "lightning_bolt",
+          "label": "t:options.lightning_bolt"
+        },
+        {
+          "value": "lipstick",
+          "label": "t:options.lipstick"
+        },
+        {
+          "value": "lock",
+          "label": "t:options.lock"
+        },
+        {
+          "value": "map_pin",
+          "label": "t:options.map_pin"
+        },
+        {
+          "value": "nut_free",
+          "label": "t:options.nut_free"
+        },
+        {
+          "value": "pants",
+          "label": "t:options.pants"
+        },
+        {
+          "value": "paw_print",
+          "label": "t:options.paw_print"
+        },
+        {
+          "value": "pepper",
+          "label": "t:options.pepper"
+        },
+        {
+          "value": "perfume",
+          "label": "t:options.perfume"
+        },
+        {
+          "value": "plane",
+          "label": "t:options.plane"
+        },
+        {
+          "value": "plant",
+          "label": "t:options.plant"
+        },
+        {
+          "value": "price_tag",
+          "label": "t:options.price_tag"
+        },
+        {
+          "value": "question_mark",
+          "label": "t:options.question_mark"
+        },
+        {
+          "value": "recycle",
+          "label": "t:options.recycle"
+        },
+        {
+          "value": "return",
+          "label": "t:options.return"
+        },
+        {
+          "value": "ruler",
+          "label": "t:options.ruler"
+        },
+        {
+          "value": "serving_dish",
+          "label": "t:options.serving_dish"
+        },
+        {
+          "value": "shirt",
+          "label": "t:options.shirt"
+        },
+        {
+          "value": "shoe",
+          "label": "t:options.shoe"
+        },
+        {
+          "value": "silhouette",
+          "label": "t:options.silhouette"
+        },
+        {
+          "value": "bluesky",
+          "label": "t:options.social_bluesky"
+        },
+        {
+          "value": "facebook",
+          "label": "t:options.social_facebook"
+        },
+        {
+          "value": "instagram",
+          "label": "t:options.social_instagram"
+        },
+        {
+          "value": "linkedin",
+          "label": "t:options.social_linkedin"
+        },
+        {
+          "value": "pinterest",
+          "label": "t:options.social_pinterest"
+        },
+        {
+          "value": "snapchat",
+          "label": "t:options.social_snapchat"
+        },
+        {
+          "value": "spotify",
+          "label": "t:options.social_spotify"
+        },
+        {
+          "value": "threads",
+          "label": "t:options.social_threads"
+        },
+        {
+          "value": "tiktok",
+          "label": "t:options.social_tiktok"
+        },
+        {
+          "value": "tumblr",
+          "label": "t:options.social_tumblr"
+        },
+        {
+          "value": "twitter",
+          "label": "t:options.social_twitter"
+        },
+        {
+          "value": "vimeo",
+          "label": "t:options.social_vimeo"
+        },
+        {
+          "value": "youtube",
+          "label": "t:options.social_youtube"
+        },
+        {
+          "value": "whatsapp",
+          "label": "t:options.social_whatsapp"
+        },
+        {
+          "value": "snowflake",
+          "label": "t:options.snowflake"
+        },
+        {
+          "value": "star",
+          "label": "t:options.star"
+        },
+        {
+          "value": "stopwatch",
+          "label": "t:options.stopwatch"
+        },
+        {
+          "value": "truck",
+          "label": "t:options.truck"
+        },
+        {
+          "value": "washing",
+          "label": "t:options.washing"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "select",
+      "id": "source",
+      "label": "Text from",
+      "options": [
+        {
+          "value": "text",
+          "label": "The text below"
+        },
+        {
+          "value": "description_list",
+          "label": "The product description's bullet list"
+        }
+      ],
+      "default": "text",
+      "info": "The bullet list option shows each product's spec bullets here and hides them in the description."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "header",
+      "content": "Show on"
+    },
+    {
+      "type": "text",
+      "id": "product_types",
+      "label": "Product types",
+      "info": "Comma-separated, matched to each product's Type, e.g. bracelet, necklace. Leave empty for every product."
+    },
+    {
+      "type": "text",
+      "id": "description_contains",
+      "label": "Only when the description contains",
+      "info": "For example sterling silver. Leave empty to skip this check."
+    },
+    {
+      "type": "text",
+      "id": "description_excludes",
+      "label": "Hide when the description contains",
+      "info": "For example sterling silver. Leave empty to skip this check."
+    }
+  ]
+}
+{% endschema %}

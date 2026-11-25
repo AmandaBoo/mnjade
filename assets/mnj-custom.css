@@ -4,10 +4,10 @@
   See CUSTOMIZATIONS.md.
 */
 
-/* Global: body text 15px (the type setting only offers 14 or 16), and the header flower shape */
+/* Global: the header flower shape in #E2E3DC, a shade darker than the #EFEFEB background. Body text is
+   the type setting's 16px, like Maison Third's */
 :root {
-  --font-size--paragraph: 0.9375rem;
-  --mnj-flower: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='%23e6e6e6'%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11'/%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11' transform='rotate(72 24 24)'/%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11' transform='rotate(144 24 24)'/%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11' transform='rotate(216 24 24)'/%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11' transform='rotate(288 24 24)'/%3E%3Ccircle cx='24' cy='24' r='13'/%3E%3C/svg%3E");
+  --mnj-flower: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='%23e2e3dc'%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11'/%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11' transform='rotate(72 24 24)'/%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11' transform='rotate(144 24 24)'/%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11' transform='rotate(216 24 24)'/%3E%3Cellipse cx='24' cy='11' rx='9.5' ry='11' transform='rotate(288 24 24)'/%3E%3Ccircle cx='24' cy='24' r='13'/%3E%3C/svg%3E");
 }
 
 /* Global: 24px inset for page-width sections on desktop */
@@ -31,10 +31,106 @@ input.search-input::placeholder,
   text-transform: lowercase;
 }
 
-/* Global: circular product images on cards and in the product gallery */
+/* Global: photos are soft blobs, five shapes cycling across neighbours (--mnj-blob). Product
+   photos on cards, the shop's custom order card and search results morph to a bolder shape on hover,
+   like Maison Third's; phones, which can't hover, drift slowly instead. The product page's own photo
+   keeps a still blob. Reduced motion keeps the still shapes */
+:root {
+  --mnj-blob-1: 58% 42% 55% 45% / 48% 56% 44% 52%;
+  --mnj-blob-2: 44% 56% 48% 52% / 55% 43% 57% 45%;
+  --mnj-blob-3: 52% 48% 40% 60% / 46% 58% 42% 54%;
+  --mnj-blob-4: 40% 60% 58% 42% / 56% 44% 56% 44%;
+  --mnj-blob-5: 55% 45% 42% 58% / 42% 55% 45% 58%;
+  --mnj-blob-hover: 38% 62% 34% 66% / 62% 36% 64% 38%;
+  --mnj-blob: var(--mnj-blob-1);
+}
+
+:nth-child(5n + 2) > .product-card,
+.image-block:nth-child(5n + 2),
+.slideshow-controls__thumbnail:nth-child(5n + 2) {
+  --mnj-blob: var(--mnj-blob-2);
+}
+
+:nth-child(5n + 3) > .product-card,
+.image-block:nth-child(5n + 3),
+.slideshow-controls__thumbnail:nth-child(5n + 3) {
+  --mnj-blob: var(--mnj-blob-3);
+}
+
+:nth-child(5n + 4) > .product-card,
+.image-block:nth-child(5n + 4),
+.slideshow-controls__thumbnail:nth-child(5n + 4) {
+  --mnj-blob: var(--mnj-blob-4);
+}
+
+:nth-child(5n) > .product-card,
+.image-block:nth-child(5n),
+.slideshow-controls__thumbnail:nth-child(5n) {
+  --mnj-blob: var(--mnj-blob-5);
+}
+
 .card-gallery img,
-media-gallery img:not(.dialog-zoomed-gallery *) {
-  border-radius: 50%;
+media-gallery slideshow-slides img:not(.dialog-zoomed-gallery *),
+[id$='__custom_card'] .group-block .group-block,
+.predictive-search-results__card--product .resource-card__image,
+.slideshow-controls__thumbnail,
+.slideshow-controls__thumbnail img,
+.cart-items__media-image {
+  border-radius: var(--mnj-blob);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card-gallery img,
+  [id$='__custom_card'] .group-block .group-block,
+  .predictive-search-results__card--product .resource-card__image {
+    transition: border-radius 0.8s var(--ease-out-cubic);
+  }
+
+  @media (hover: hover) {
+    .product-card:is(:hover, :focus-within) .card-gallery img,
+    [id$='__custom_card']:hover .group-block .group-block,
+    [id$='__custom_card']:focus-within .group-block .group-block,
+    .predictive-search-results__card--product:is(:hover, :focus-within) .resource-card__image {
+      border-radius: var(--mnj-blob-hover);
+    }
+  }
+
+  @media (hover: none) {
+    .card-gallery img,
+    [id$='__custom_card'] .group-block .group-block {
+      animation: mnj-blob 14s ease-in-out infinite;
+    }
+
+    :nth-child(5n + 2) > .product-card .card-gallery img {
+      animation-duration: 17s;
+      animation-delay: -6s;
+    }
+
+    :nth-child(5n + 3) > .product-card .card-gallery img {
+      animation-duration: 12s;
+      animation-delay: -10s;
+    }
+  }
+}
+
+@keyframes mnj-blob {
+  0%,
+  100% {
+    border-radius: var(--mnj-blob);
+  }
+
+  50% {
+    border-radius: var(--mnj-blob-hover);
+  }
+}
+
+/* Product page thumbnails: blobs with a light outline, the selected one dark */
+.slideshow-controls__thumbnail {
+  outline: 1px solid #b9bbb4;
+}
+
+.slideshow-controls__thumbnail[aria-selected='true'] {
+  outline: 2px solid var(--color-foreground);
 }
 
 /* Cards: the badge sits on the circle's edge, like a sticker, instead of in the empty corner */
@@ -62,24 +158,20 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   }
 }
 
-/* Header: 36px above the icons, 32px between the logo and the nav, 24px below it */
-[data-menu-style='menu'] .header__row--top .header__columns {
-  --padding-block-start: 36px;
-  --padding-block-end: 16px;
+/* Header: one row (menu left, logo centred, icons right) with 20px above and below on desktop */
+@media screen and (min-width: 750px) {
+  [data-menu-style='menu'] .header__row--top .header__columns {
+    --padding-block-start: 20px;
+    --padding-block-end: 20px;
+  }
 }
 
-[data-menu-style='menu'] .header__row--bottom .header__columns {
-  --padding-block-start: 16px;
-  --padding-block-end: 24px;
-}
-
-/* Header: 15px semibold nav links, all full black */
+/* Header: semibold nav links (18px from the menu's font size setting), all full black */
 .menu-list {
   --opacity-subdued-text: 1;
 }
 
 .menu-list__link {
-  --menu-top-level-font-size-desktop: 0.9375rem;
   --menu-top-level-font-weight: 600;
   --gap-sm: 16px;
 
@@ -87,59 +179,26 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   border-block-end: 2px solid transparent;
 }
 
+/* Header, 750-999px (half-screen windows, tablets): the menu button and drawer instead of the links.
+   Horizon only swaps to its drawer when fewer than two links fit (minimum-items 2 in its menu block)
+   and shows a "More" dropdown before that, so here each link claims over half the menu's width and
+   at most one fits. From 1000px the links return */
+@media screen and (min-width: 750px) and (max-width: 999px) {
+  .menu-list__list-item {
+    min-width: 51%;
+  }
+}
+
 /* Header: the current page's link is underlined */
 .menu-list__link--active {
   border-block-end-color: var(--color-foreground);
 }
 
-/* Header on phones: shop and about stay visible under the logo, so no hamburger */
-.header-drawer {
-  display: none;
-}
-
-/* Header on phones: search takes the hamburger's slot, level with the cart on the right.
-   #header-component: Horizon sets this grid area with a more specific rule */
-@media screen and (max-width: 749px) {
-  #header-component .header__columns .search-action {
-    grid-area: leftA;
-  }
-}
-
-#header-component[data-menu-style='drawer'] .header__columns .search-action {
-  grid-area: leftA;
-}
-
-.menu-list--mobile li {
-  padding-block: 0;
-}
-
-.menu-list--mobile .menu-list__item {
-  display: inline-flex;
-  align-items: center;
-  min-height: 40px;
-  padding-inline: 16px;
-  border-block-end: 2px solid transparent;
-  color: var(--color-foreground);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.menu-list--mobile .menu-list__item[aria-current='page'] {
-  border-block-end-color: var(--color-foreground);
-}
-
-/* Header: search, account and cart on 48px soft gray flowers */
+/* Header: search, account and cart on 48px soft flowers */
 .header__column--right,
 .header__column--right header-actions {
   gap: 10px;
   margin-inline-start: 0;
-}
-
-[data-menu-style='menu'] .header__column--right {
-  align-self: start;
-  margin-block-end: -4px; /* the 48px flowers should not make the logo row taller */
-  padding-inline-end: 8px;
 }
 
 .header__column--right .search-action {
@@ -161,6 +220,54 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   height: 48px;
   padding: 0;
   border: 0;
+  border-radius: 50%;
+  background: var(--mnj-flower) center / contain no-repeat;
+}
+
+/* Header on phones (and whenever Horizon switches to the menu drawer): like Maison Third, the menu
+   button sits alone on the left and search joins the cart on the right. The right side only has room for
+   two icons, so the account icon is desktop-only. [data-menu-style] matches Horizon's specificity */
+@media screen and (max-width: 749px) {
+  #header-component[data-menu-style] .header__columns .search-action {
+    grid-area: rightA;
+  }
+
+  #header-component[data-menu-style] header-actions .account-button {
+    display: none;
+  }
+}
+
+#header-component[data-menu-style='drawer'] .header__columns .search-action {
+  grid-area: rightA;
+}
+
+#header-component[data-menu-style='drawer'] header-actions .account-button {
+  display: none;
+}
+
+/* Header, menu-drawer layout from 750px: Horizon drops the row's vertical padding for the small phone
+   logo, which left the full-size logo touching the header line */
+@media screen and (min-width: 750px) {
+  #header-component[data-menu-style='drawer'] .header__columns {
+    padding-block: 12px;
+  }
+
+  /* The drawer layout's icon slots are 44px, so the flowers use their 40px phone size */
+  #header-component[data-menu-style='drawer'] .header-actions__action {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Header on phones: the menu button sits on the same flower as the other icons. .menu-drawer-container
+   matches Horizon's padding rule */
+.menu-drawer-container .header__icon--menu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0; /* Horizon's 16px padding pushed the icon below the flower's centre */
   border-radius: 50%;
   background: var(--mnj-flower) center / contain no-repeat;
 }
@@ -219,20 +326,6 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   display: none;
 }
 
-/* Shop: filters centred under the tabs, without Horizon's product count */
-[data-template^='collection'] .facets--horizontal .facets__form {
-  justify-content: center;
-}
-
-[data-template^='collection'] .facets--horizontal .facets__filters-wrapper {
-  flex-grow: 0;
-  margin-inline-end: 0;
-}
-
-[data-template^='collection'] .facets--horizontal .products-count-wrapper {
-  display: none;
-}
-
 /* Shop: the tabs and the filter row (the "filter" button on phones) stay pinned under the sticky
    header while scrolling. Horizon pins the header at -1px, hence the 1px less. The tab bar is one
    40px row plus its section's 24px bottom padding, which Horizon's spacing scale shrinks on phones,
@@ -245,6 +338,11 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   }
 }
 
+/* With the tabs section switched off, the filter row pins straight under the header */
+[data-template^='collection']:not(:has(.shopify-section[id$='__shop_tabs'])) {
+  --mnj-shop-tabs-height: 0px;
+}
+
 [data-template^='collection'] .shopify-section[id$='__shop_tabs'] {
   position: sticky;
   top: calc(var(--header-height, 0px) - 1px);
@@ -255,18 +353,53 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
 [data-template^='collection'] :is(.facets-block-wrapper, .facets-toggle) {
   position: sticky;
   top: calc(var(--header-height, 0px) - 1px + var(--mnj-shop-tabs-height));
-  z-index: calc(var(--layer-sticky) - 1);
+  z-index: calc(var(--layer-sticky) - 2); /* under the tabs as it scrolls away after the last product */
   background-color: var(--color-background);
+}
+
+/* Shop: the filter row's labels, item count and sort at 14px, like Maison Third's */
+[data-template^='collection'] .facets--horizontal,
+[data-template^='collection'] .facets--horizontal .facets__label {
+  font-size: 0.875rem;
+}
+
+/* Collection and product titles: 36px, 28px on phones. Quicksand's letters are about a fifth taller
+   and wider than Maison Third's Cardo, so this reads like their 44px (33px on phones) titles. The text
+   block's own sizes jump from 32 to 40px and don't shrink this far on phones */
+[data-template^='collection'] .shopify-section[id$='__section'] h1,
+.product-details .text-block h1 {
+  font-size: 1.75rem;
+
+  @media screen and (min-width: 750px) {
+    font-size: 2.25rem;
+  }
+}
+
+/* Shop: the sort menu keeps featured, price (both ways) and newest; Shopify always sends the rest
+   (relevance, best selling, alphabetical, oldest) */
+.sorting-filter__option:has(
+    input:is(
+        [value='most-relevant'],
+        [value='best-selling'],
+        [value='title-ascending'],
+        [value='title-descending'],
+        [value='created-ascending']
+      )
+  ),
+.sorting-filter__select
+  option:is(
+    [value='most-relevant'],
+    [value='best-selling'],
+    [value='title-ascending'],
+    [value='title-descending'],
+    [value='created-ascending']
+  ) {
+  display: none;
 }
 
 /* No "filter" button (phones) when the collection has no products to filter */
 [data-template^='collection'] .shopify-section:has(.main-collection-grid__empty) .facets-toggle {
   display: none;
-}
-
-/* Phones: the "filter" button that opens Horizon's drawer, centred under the tabs */
-[data-template^='collection'] .facets-toggle {
-  justify-content: center;
 }
 
 /* The empty "clear all" slot still takes a gap and pushes the row off centre; drop it until a
@@ -284,51 +417,50 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   width: var(--mnj-card-size);
 }
 
-/* The card matches one product grid column. Its section is the container; on desktop the
-   grid is 48px narrower (the grid section's 24px side padding), its columns are at least
-   250px (medium cards) with 32px gaps, so these widths are where it adds a column */
+/* The card matches one product grid column. Its section is the container, the same width as the
+   grid (no side padding, so the grid lines up with the title, tabs and filters); columns are at
+   least 250px (medium cards) with 32px gaps, so these widths are where it adds a column */
 [id$='__custom_card'] .section-content-wrapper {
   container-type: inline-size;
 }
 
 @media screen and (min-width: 750px) {
   [id$='__custom_card'] .group-block:has(.group-block) {
-    --mnj-card-size: calc((100cqw - 48px - 32px) / 2);
+    --mnj-card-size: calc((100cqw - 32px) / 2);
   }
 
-  @container (min-width: 862px) {
+  @container (min-width: 814px) {
     [id$='__custom_card'] .group-block:has(.group-block) {
-      --mnj-card-size: calc((100cqw - 48px - 2 * 32px) / 3);
+      --mnj-card-size: calc((100cqw - 2 * 32px) / 3);
     }
   }
 
-  @container (min-width: 1144px) {
+  @container (min-width: 1096px) {
     [id$='__custom_card'] .group-block:has(.group-block) {
-      --mnj-card-size: calc((100cqw - 48px - 3 * 32px) / 4);
+      --mnj-card-size: calc((100cqw - 3 * 32px) / 4);
     }
   }
 
-  @container (min-width: 1426px) {
+  @container (min-width: 1378px) {
     [id$='__custom_card'] .group-block:has(.group-block) {
-      --mnj-card-size: calc((100cqw - 48px - 4 * 32px) / 5);
+      --mnj-card-size: calc((100cqw - 4 * 32px) / 5);
     }
   }
 
-  @container (min-width: 1708px) {
+  @container (min-width: 1660px) {
     [id$='__custom_card'] .group-block:has(.group-block) {
-      --mnj-card-size: calc((100cqw - 48px - 5 * 32px) / 6);
+      --mnj-card-size: calc((100cqw - 5 * 32px) / 6);
     }
   }
 }
 
-/* The circle gets an explicit height equal to the card's width. Safari sizes it from its
+/* The shape gets an explicit height equal to the card's width. Safari sizes it from its
    content when only aspect-ratio is set, which makes an oval */
 [id$='__custom_card'] .group-block .group-block {
   flex: none;
   width: var(--mnj-card-size);
   height: var(--mnj-card-size);
   min-height: 0;
-  border-radius: 50%;
   overflow: hidden;
 }
 
@@ -419,6 +551,14 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   }
 }
 
+/* Product: an option with only one value (e.g. the single "Length 18 in") isn't a choice, and the details
+   row already gives the length, so it's hidden; the picker goes too when nothing is left to pick. The
+   option stays on the product for the shop's length filter */
+.product-details .variant-option[data-testid='variant-option-single'],
+.product-details variant-picker:not(:has(.variant-option:not([data-testid='variant-option-single']))) {
+  display: none;
+}
+
 /* Product: plain "add to cart" label, no icon */
 .add-to-cart-icon {
   display: none;
@@ -448,11 +588,12 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   }
 }
 
-/* Cart: summary panel keeps its padding and #F2F2F2 fill on phones too
-   (Horizon drops the block's background color below 750px) */
+/* Cart: summary panel keeps its padding, #F6F6F3 fill (the palette's color3) and outline on phones
+   too (Horizon drops the block's background color below 750px) */
 .cart-summary__inner.cart-summary__inner {
   padding: 32px;
-  background-color: #f2f2f2;
+  border: 1px solid #e3e4de;
+  background-color: #f6f6f3;
 }
 
 /* Cart: rows with lines above and below, Quicksand names, no repeated unit price */
@@ -585,8 +726,9 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
 
 .shopify-policy__body {
   padding: 40px;
+  border: 1px solid #e3e4de;
   border-radius: 32px;
-  background-color: #f2f2f2;
+  background-color: #f6f6f3; /* the palette's color3, like the other panels */
   line-height: 1.8;
 }
 
@@ -608,7 +750,7 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
 [id$='__custom_main'] .placeholder-image,
 [id$='__custom_lookbook'] .image-block img,
 [id$='__custom_lookbook'] .placeholder-image {
-  border-radius: 50%;
+  border-radius: var(--mnj-blob);
 }
 
 [id$='__about_circles'] .image-block {
@@ -794,10 +936,16 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
   text-decoration: underline;
 }
 
-/* Search: products as centered circular cards */
+/* Search: "recently viewed" remembers product IDs in the visitor's browser. When one of those
+   products has since been deleted, Horizon still draws a blank card with its $19.99 placeholder price;
+   its link has no address, so those cards are hidden */
+.predictive-search-results__card--product:has(.resource-card__link[href='']) {
+  display: none;
+}
+
+/* Search: products as centered square cards (their blob shape is with the cards' above) */
 .predictive-search-results__card--product .resource-card__image {
   aspect-ratio: 1;
-  border-radius: 50%;
 }
 
 .predictive-search-results__card--product .resource-card__content {
@@ -814,7 +962,7 @@ media-gallery img:not(.dialog-zoomed-gallery *) {
 }
 
 .predictive-search-results__card--product .price {
-  color: #555555;
+  color: #5c605b;
   font-size: 0.875rem;
   font-weight: 400;
 }

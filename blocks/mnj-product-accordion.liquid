@@ -1,0 +1,71 @@
+{% doc %}
+  Renders expandable rows (sizing, care and so on) for the product being viewed, like a
+  materials-and-care accordion. Each row is an `_mnj-accordion-row` block that decides for itself
+  whether it applies to the product, from its product types and description text, so one product
+  template serves bracelets, necklaces and earrings. Nothing renders when no row applies. Its stylesheet
+  hides the description's spec bullets and Sizing/Care paragraphs when rows show them.
+
+  @example
+  {% content_for 'block', type: 'mnj-product-accordion', id: 'product-accordion' %}
+{% enddoc %}
+
+{% capture rows %}{% content_for 'blocks' %}{% endcapture %}
+
+{% if rows != blank or request.design_mode %}
+  <div
+    class="mnj-product-accordion"
+    {{ block.shopify_attributes }}
+  >
+    {{ rows }}
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .mnj-product-accordion {
+    width: 100%;
+    border-block-start: 1px solid var(--color-border);
+  }
+
+  /* The description doesn't repeat what the accordion shows: its first bullet list when a row takes
+     it, and its bold-titled paragraphs (a heading such as Sizing or Care, then a line break) whenever
+     the product has rows. Products without rows keep the whole description */
+  .product-details:has(.mnj-accordion-row--description-list) [class*='product_description'] > ul:first-of-type,
+  .product-details:has(.mnj-accordion-row) [class*='product_description'] > p:has(> strong:first-child + br) {
+    display: none;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "MN JADE product accordion",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_mnj-accordion-row"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MN JADE product accordion",
+      "blocks": {
+        "sizing": {
+          "type": "_mnj-accordion-row",
+          "settings": {
+            "heading": "sizing",
+            "icon": "ruler",
+            "product_types": "bracelet"
+          }
+        },
+        "care": {
+          "type": "_mnj-accordion-row",
+          "settings": {
+            "heading": "care",
+            "icon": "leather"
+          }
+        }
+      },
+      "block_order": ["sizing", "care"]
+    }
+  ]
+}
+{% endschema %}
