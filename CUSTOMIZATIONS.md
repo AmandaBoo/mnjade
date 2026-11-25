@@ -19,6 +19,9 @@ stylesheet, a few small blocks and one line in `layout/theme.liquid`.
 | `blocks/mnj-social-profiles.liquid` | Not visible. Adds the shop's Instagram, TikTok and other profile links to the structured data search engines read. In the footer's group; links are block settings |
 | `blocks/mnj-custom-request-form.liquid` | The contact and custom order forms: labels above the fields and up to two dropdowns. Sends through Shopify's contact form; every label and option is a block setting |
 
+Outside the theme: `product-sheets/` holds the blank master product sheet (`MN JADE products MASTER.csv`,
+header only) that listing sessions copy; Shopify's sync ignores it. See its README.
+
 ## The one edit to a Horizon file
 
 In `layout/theme.liquid`, directly after `{{ content_for_header }}`:
