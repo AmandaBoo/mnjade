@@ -237,7 +237,7 @@
                     "text": "<p>Measure your wrist with a soft tape measure and choose a matching length for a comfortable fit, or size up ½\" for a loose fit.</p>",
                     "product_types": "bracelet, bracelets",
                     "description_contains": "",
-                    "description_excludes": "",
+                    "description_excludes": "rope cord",
                     "source": "text"
                   },
                   "blocks": {}
@@ -250,6 +250,19 @@
                     "text": "<p>Jade is very durable, but keep it away from harsh cleansers. Roll your bracelet on and off rather than stretching the cord, and wipe the jade with a soft, dry cloth.</p>",
                     "product_types": "bracelet, bracelets",
                     "description_contains": "",
+                    "description_excludes": "rope cord",
+                    "source": "text"
+                  },
+                  "blocks": {}
+                },
+                "care_bracelet_rope": {
+                  "type": "_mnj-accordion-row",
+                  "settings": {
+                    "heading": "care",
+                    "icon": "leather",
+                    "text": "<p>Jade is very durable, but keep it away from harsh cleansers. Pull the cords to tighten or loosen your bracelet, and wipe the jade with a soft, dry cloth.</p>",
+                    "product_types": "bracelet, bracelets",
+                    "description_contains": "rope cord",
                     "description_excludes": "",
                     "source": "text"
                   },
@@ -312,6 +325,7 @@
                 "details",
                 "sizing_bracelet",
                 "care_bracelet",
+                "care_bracelet_rope",
                 "care_necklace",
                 "care_necklace_silver",
                 "care_earrings"
